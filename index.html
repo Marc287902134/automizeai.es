@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AutomizeAI - Automatización de Procesos sin Código</title>
-  <meta name="description" content="Automatizamos tus procesos empresariales sin programación. Ahorra tiempo, reduce errores y escala tu negocio con herramientas como Zapier, Make y más." />
+  <title>AutomizeAI - Automatización de Procesos</title>
+  <meta name="description" content="Automatiza tus procesos empresariales sin programar. Ahorra tiempo, reduce errores y escala tu negocio con herramientas como Zapier, Make y más." />
   <meta name="keywords" content="automatización, automatización de procesos, sin código, zapier, make, automatización empresarial" />
   <meta name="author" content="AutomizeAI" />
-  <meta name="robots" content="index, follow" />
 
-  <!-- Estilos simples en línea -->
+  <!-- Estilos -->
   <style>
     * {
       margin: 0;
@@ -23,96 +22,653 @@
       line-height: 1.6;
     }
     header {
-      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      background: #000;
       color: white;
-      padding: 2rem 1rem;
-      text-align: center;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 700px;
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
       margin: 0 auto;
+      padding: 0 1rem;
     }
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
+    .logo {
+      width: 200px;
+      height: auto;
+      margin-right: 1rem;
     }
-    section {
-      margin-bottom: 3rem;
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .nav-links a:hover {
+      color: #00bfff;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: #0066cc;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s;
+    }
+    .dropdown-content a:hover {
+      background: #e0e0e0;
+      color: #00bfff;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .dropdown-content {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+      }
+      .dropdown-content a {
+        text-align: center;
+      }
+    }
+    .hero {
+      background: linear-gradient(135deg, #000, #001a33);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    .hero .benefits {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .benefit {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-green {
+      background: #28a745;
+      color: white;
+      border: none;
+    }
+    .btn-purple {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid #ffffff;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    .section {
+      padding: 4rem 1rem;
       text-align: center;
     }
-    h2 {
-      font-size: 2rem;
-      color: #4a00e0;
-      margin-bottom: 1rem;
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #0066cc;
+    }
+    .section p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: #333;
     }
     .services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
+      margin-top: 2rem;
     }
     .service-card {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 12px;
       padding: 1.5rem;
-      width: 300px;
+      width: 350px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+      border: 1px solid #e0e0e0;
     }
     .service-card:hover {
       transform: translateY(-5px);
     }
-    .service-card h3 {
-      color: #333;
-      margin-bottom: 0.8rem;
-    }
-    .cta {
-      background-color: #4a00e0;
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      background: #0066cc;
       color: white;
-      padding: 2rem;
       border-radius: 10px;
-      max-width: 800px;
-      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
-    .cta h2 {
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #002b74;
+    }
+    .problem {
+      background: #ffebee;
+      border-left: 3px solid #d32f2f;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #d32f2f;
+      font-size: 0.9rem;
+    }
+    .solution {
+      background: #e8f5e8;
+      border-left: 3px solid #4caf50;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #4caf50;
+      font-size: 0.9rem;
+    }
+    .saving {
+      background: #e3f2fd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .saving strong {
+      color: #0066cc;
+      font-size: 1.2rem;
+    }
+    .implementation {
+      color: #0066cc;
+      font-size: 0.9rem;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #0066cc, #003399);
       color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      margin: 4rem 0;
     }
-    .btn {
-      display: inline-block;
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .btn-white {
       background: white;
-      color: #4a00e0;
+      color: #0066cc;
+      border: none;
       padding: 0.8rem 1.5rem;
-      margin-top: 1rem;
       border-radius: 50px;
-      text-decoration: none;
       font-weight: bold;
       transition: all 0.3s;
     }
-    .btn:hover {
+    .btn-white:hover {
       background: #f0f0f0;
-      transform: scale(1.05);
     }
-    footer {
+    .calculator-form {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .calculator-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .calculator-form input, .calculator-form select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .calculator-form button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .calculator-form button:hover {
+      background: #218838;
+    }
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 350px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #e0e0e0;
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+    .testimonial-name {
+      font-weight: bold;
+      color: #333;
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .testimonial-company {
+      color: #0066cc;
+      font-weight: bold;
+    }
+    .stars {
+      color: #ffc107;
+      margin: 0.5rem 0;
+    }
+    .testimonial-text {
+      margin-bottom: 1rem;
+      font-style: italic;
+      color: #333;
+    }
+    .results-obtained {
+      background: #e3f2fd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+    .results-obtained strong {
+      color: #0066cc;
+    }
+    .before-after {
+      margin-bottom: 1rem;
+    }
+    .before {
+      background: #ffebee;
+      border-left: 3px solid #d32f2f;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #d32f2f;
+      font-size: 0.9rem;
+    }
+    .after {
+      background: #e8f5e8;
+      border-left: 3px solid #4caf50;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #4caf50;
+      font-size: 0.9rem;
+    }
+    .about-section {
+      padding: 4rem 1rem;
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .about-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #002b74;
+    }
+    .about-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    .about-mission {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .mission-icon {
+      width: 50px;
+      height: 50px;
+      background: #0066cc;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+    .mission-title {
+      font-weight: bold;
+      color: #333;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #e0e0e0;
+    }
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      background: #0066cc;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #002b74;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      background: #0066cc;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .service-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #002b74;
+    }
+    .service-description {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .final-cta {
+      background: linear-gradient(135deg, #0066cc, #003399);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      margin: 4rem 0;
+    }
+    .final-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .final-cta p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: white;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background: #ff9800;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .contact-form button:hover {
+      background: #e68a00;
+    }
+    .call-now {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: #f8f9fa;
+    }
+    .call-now h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0066cc;
+    }
+    .call-now p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: #333;
+    }
+    .phone-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .phone-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #e0e0e0;
+      width: 300px;
+    }
+    .phone-icon {
+      width: 60px;
+      height: 60px;
+      background: #28a745;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .phone-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .phone-number {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #28a745;
+      margin-bottom: 1rem;
+    }
+    .call-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .call-btn:hover {
+      background: #218838;
+    }
+    .footer {
+      background: #000;
+      color: #ccc;
       text-align: center;
       padding: 2rem;
-      background: #333;
-      color: white;
       margin-top: 3rem;
     }
+    .footer h2 {
+      color: #0066cc;
+      margin-bottom: 1rem;
+    }
+    .footer p {
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #0066cc;
+    }
+    .email-list {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .email-list a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .email-list a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
+      .hero h1 {
+        font-size: 2.5rem;
       }
-      .services {
+      .hero .benefits {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
+      }
+      .service-card {
+        width: 100%;
+      }
+      .testimonial-card {
+        width: 100%;
+      }
+      .phone-cards {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .phone-card {
+        width: 100%;
       }
     }
   </style>
@@ -120,44 +676,452 @@
 <body>
 
   <header>
-    <h1>AutomizeAI</h1>
-    <p>Automatiza tus procesos sin programar. Ahorra hasta 20 horas semanales.</p>
+    <div class="header-container">
+      <img src="https://i.imgur.com/6kKZvXf.png" alt="Logo AutomizeAI" class="logo">
+      <div class="menu-toggle">☰</div>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a href="#">Inicio</a>
+          <div class="dropdown-content">
+            <a href="#">Inicio</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Procesos</a>
+          <div class="dropdown-content">
+            <a href="#">Facturación Automática</a>
+            <a href="#">Gestión de Inventario</a>
+            <a href="#">Atención al Cliente 24/7</a>
+            <a href="#">Reportes Automáticos</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Calculadora</a>
+          <div class="dropdown-content">
+            <a href="#">Calculadora de Ahorro</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Resultados</a>
+          <div class="dropdown-content">
+            <a href="#">Testimonios</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Nosotros</a>
+          <div class="dropdown-content">
+            <a href="#">Misión</a>
+            <a href="#">Visión</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Servicios</a>
+          <div class="dropdown-content">
+            <a href="#">Automatización de Procesos</a>
+            <a href="#">Integración de Sistemas</a>
+            <a href="#">IA Aplicada</a>
+            <a href="#">Optimización de Flujos</a>
+            <a href="#">Análisis de Datos</a>
+            <a href="#">Asistencia Virtual</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Contacto</a>
+          <div class="dropdown-content">
+            <a href="#">Formulario de Contacto</a>
+            <a href="#">Teléfonos</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Redes</a>
+          <div class="dropdown-content">
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Teléfono</a>
+          <div class="dropdown-content">
+            <a href="tel:+34681661296">+34 681 66 12 96</a>
+            <a href="tel:+34601003732">+34 601 00 37 32</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </header>
 
-  <main>
+  <section class="hero">
+    <h1>¿Pierdes 30 horas semanales en tareas repetitivas?</h1>
+    <p>Automatizamos tu facturación, gestión de inventario, atención al cliente y reportes.<br><strong style="color: #00ff88;">Recupera tu tiempo. Multiplica tus beneficios.</strong></p>
+    <div class="benefits">
+      <div class="benefit"><span>⏱️</span> Ahorra 30h/semana</div>
+      <div class="benefit"><span>💶</span> ROI del 300%</div>
+      <div class="benefit"><span>📈</span> Elimina errores</div>
+    </div>
+    <div class="buttons">
+      <a href="#" class="btn btn-green">Ver Procesos Específicos →</a>
+      <a href="#" class="btn btn-purple">Calcular mi Ahorro</a>
+    </div>
+    <p style="margin-top: 2rem; font-size: 1rem; color: #00ff88;">Implementación en 2 semanas. Garantía de resultados.</p>
+  </section>
 
-    <section>
-      <h2>¿Qué automatizamos por ti?</h2>
-      <p>Ayudamos a emprendedores y pymes a eliminar tareas repetitivas usando herramientas como Zapier, Make, Google Apps Script y más.</p>
-    </section>
+  <section class="section">
+    <h2>¿Cuál es tu problema exacto?</h2>
+    <p>Encuentra tu situación específica y descubre cómo puedes ahorrar tiempo y dinero</p>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;">
+      <button style="background: #0066cc; color: white; padding: 0.5rem 1rem; border: none; border-radius: 50px; font-size: 0.9rem;">Todos</button>
+      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Retail/E-commerce</button>
+      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Logística</button>
+      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Salud</button>
+      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Educación</button>
+      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Servicios</button>
+    </div>
+  </section>
 
-    <section class="services">
-      <div class="service-card">
-        <h3>CRM Automatizado</h3>
-        <p>Conecta tus leads de Instagram, WhatsApp o formularios con tu CRM automáticamente.</p>
+  <div class="services">
+    <!-- Facturación Automática -->
+    <div class="service-card">
+      <div class="service-icon">📄</div>
+      <h3>Facturación Automática</h3>
+      <div class="problem">❌ Problema actual:<br>¿Pasas 8 horas semanales creando facturas manualmente?</div>
+      <div class="solution">✅ Nuestra solución:<br>Sistema que genera y envía facturas automáticamente desde tu CRM</div>
+      <div class="saving">
+        <strong>Ahorra 8h/semana = 1,280€/mes</strong>
+        <span class="implementation">Implementación: 2 semanas</span>
       </div>
-      <div class="service-card">
-        <h3>Reportes en Piloto Automático</h3>
-        <p>Genera reportes semanales de ventas, marketing o finanzas sin tocar una hoja de cálculo.</p>
+      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
+    </div>
+
+    <!-- Gestión de Inventario -->
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Gestión de Inventario</h3>
+      <div class="problem">❌ Problema actual:<br>¿Te quedas sin stock o tienes exceso sin darte cuenta?</div>
+      <div class="solution">✅ Nuestra solución:<br>Control automático con alertas y reposición inteligente</div>
+      <div class="saving">
+        <strong>Reduce costos 25% = 2,500€/mes</strong>
+        <span class="implementation">Implementación: 3 semanas</span>
       </div>
-      <div class="service-card">
-        <h3>Onboarding de Clientes</h3>
-        <p>Envía correos, agendas citas y entrega recursos automáticamente al vender un servicio.</p>
+      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
+    </div>
+
+    <!-- Atención al Cliente 24/7 -->
+    <div class="service-card">
+      <div class="service-icon">💬</div>
+      <h3>Atención al Cliente 24/7</h3>
+      <div class="problem">❌ Problema actual:<br>¿Pierdes clientes fuera del horario comercial?</div>
+      <div class="solution">✅ Nuestra solución:<br>Chatbot IA que resuelve 80% de consultas automáticamente</div>
+      <div class="saving">
+        <strong>Aumenta ventas 30% = 4,000€/mes</strong>
+        <span class="implementation">Implementación: 1 semana</span>
       </div>
-    </section>
+      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
+    </div>
 
-    <section class="cta">
-      <h2>¿Listo para automatizar tu negocio?</h2>
-      <p>Agenda una consulta gratuita y te mostramos cómo podemos ayudarte.</p>
-      <a href="https://calendly.com/tunombre/30min" class="btn" target="_blank">Agendar llamada</a>
-    </section>
+    <!-- Reportes Automáticos -->
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Reportes Automáticos</h3>
+      <div class="problem">❌ Problema actual:<br>¿Dedicas días enteros a crear informes mensuales?</div>
+      <div class="solution">✅ Nuestra solución:<br>Dashboards que se actualizan solos con datos en tiempo real</div>
+      <div class="saving">
+        <strong>Ahorra 16h/mes = 640€/mes</strong>
+        <span class="implementation">Implementación: 2 semanas</span>
+      </div>
+      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
+    </div>
+  </div>
 
-  </main>
+  <section class="cta-section">
+    <h2>¿No ves tu proceso específico?</h2>
+    <p>Cuéntanos tu situación y te mostraremos cómo automatizarla</p>
+    <a href="#" class="btn btn-white">Consulta Gratuita Personalizada</a>
+  </section>
 
-  <footer>
+  <section class="section">
+    <h2>Calculadora de Ahorro Potencial</h2>
+    <p>Complete el formulario para ver tus ahorros potenciales</p>
+    <div class="calculator-form">
+      <label for="hours">¿Cuántas horas por semana se dedican a esta tarea?</label>
+      <input type="number" id="hours" placeholder="Ej: 15">
+
+      <label for="cost">¿Cuál es el costo por hora? (€)</label>
+      <input type="number" id="cost" placeholder="Ej: 25">
+
+      <label for="employees">¿Cuántos empleados realizan estas tareas?</label>
+      <input type="number" id="employees" placeholder="Ej: 3">
+
+      <label for="process">¿Qué proceso quieres automatizar?</label>
+      <select id="process">
+        <option value="">Selecciona un proceso</option>
+        <option value="facturacion">Facturación Automática</option>
+        <option value="inventario">Gestión de Inventario</option>
+        <option value="cliente">Atención al Cliente 24/7</option>
+        <option value="reportes">Reportes Automáticos</option>
+      </select>
+
+      <button onclick="calculateSavings()">Calcular mi Ahorro</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Resultados Reales</h2>
+    <p>Empresarios reales comparten sus resultados específicos después de automatizar</p>
+    <div class="testimonials">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://i.imgur.com/6kKZvXf.png" alt="María González" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">María González</div>
+            <div class="testimonial-role">Directora Comercial</div>
+            <div class="testimonial-company">TechStart Valencia</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Automatizar la facturación fue un antes y un después. Lo que me tomaba 8 horas semanales ahora se hace solo."</div>
+        <div class="results-obtained">
+          <strong>8 horas/semana</strong> $ 1,280€/mes<br>
+          Proceso: Facturación automática
+        </div>
+        <div class="before-after">
+          <div class="before">Antes: Creaba 40 facturas manualmente cada semana</div>
+          <div class="after">Ahora: Sistema genera y envía facturas automáticamente</div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://i.imgur.com/6kKZvXf.png" alt="Carlos Ruiz" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Carlos Ruiz</div>
+            <div class="testimonial-role">CEO</div>
+            <div class="testimonial-company">LogisticsPro</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"El control de inventario en tiempo real eliminó completamente los desabastecimientos. Nuestros clientes están mucho más satisfechos."</div>
+        <div class="results-obtained">
+          <strong>15 horas/semana</strong> $ 2,500€/mes<br>
+          Proceso: Gestión de inventario
+        </div>
+        <div class="before-after">
+          <div class="before">Antes: Revisiones manuales con errores frecuentes</div>
+          <div class="after">Ahora: Alertas automáticas y reposición inteligente</div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="https://i.imgur.com/6kKZvXf.png" alt="Ana Martín" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Ana Martín</div>
+            <div class="testimonial-role">Gerente</div>
+            <div class="testimonial-company">RetailMax</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"El chatbot atiende clientes 24/7. Hemos aumentado las ventas un 150% y yo duermo tranquila sabiendo que no perdemos ningún cliente."</div>
+        <div class="results-obtained">
+          <strong>20 horas/semana</strong> $ 4,000€/mes<br>
+          Proceso: Atención al cliente automatizada
+        </div>
+        <div class="before-after">
+          <div class="before">Antes: Perdía ventas fuera del horario comercial</div>
+          <div class="after">Ahora: Chatbot IA atiende y vende las 24 horas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>¿Quieres resultados como estos?</h2>
+    <p>Cuéntanos tu proceso y te mostraremos cómo automatizarlo</p>
+    <a href="#" class="btn btn-white">Quiero Mi Consulta Gratuita</a>
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-title">Sobre AutomizeAI</h2>
+    <p class="about-subtitle">Innovación tecnológica al servicio de tu empresa</p>
+    <div class="about-mission">
+      <div class="mission-icon">🎯</div>
+      <div>
+        <div class="mission-title">Nuestra Misión</div>
+        <p>En AutomizeAI ayudamos a las empresas a optimizar procesos, reducir costos y liberar tiempo mediante automatización e IA.</p>
+      </div>
+    </div>
+    <div class="about-vision">
+      <div class="vision-icon">👁️</div>
+      <div>
+        <div class="vision-title">Nuestra Visión</div>
+        <p>Ser líderes en automatización empresarial, democratizando el acceso a la IA para empresas de cualquier tamaño.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Proyectos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📈</div>
+      <div class="stat-number">85%</div>
+      <div class="stat-label">Eficiencia</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⏰</div>
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Soporte</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Satisfacción</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Nuestros Servicios</h2>
+    <p>Soluciones tecnológicas integrales para tu empresa</p>
+    <div class="services-grid">
+      <!-- Servicio 1 -->
+      <div class="service-item">
+        <div class="service-icon">⚙️</div>
+        <h3 class="service-title">Automatización de Procesos</h3>
+        <p class="service-description">Eliminamos tareas repetitivas con soluciones automatizadas.</p>
+      </div>
+      <!-- Servicio 2 -->
+      <div class="service-item">
+        <div class="service-icon">🔌</div>
+        <h3 class="service-title">Integración de Sistemas</h3>
+        <p class="service-description">Unificamos herramientas empresariales en flujos eficientes.</p>
+      </div>
+      <!-- Servicio 3 -->
+      <div class="service-item">
+        <div class="service-icon">🧠</div>
+        <h3 class="service-title">Inteligencia Artificial Aplicada</h3>
+        <p class="service-description">IA personalizada para análisis y toma de decisiones.</p>
+      </div>
+      <!-- Servicio 4 -->
+      <div class="service-item">
+        <div class="service-icon">🔗</div>
+        <h3 class="service-title">Optimización de Flujos</h3>
+        <p class="service-description">Rediseñamos procesos para maximizar la eficiencia.</p>
+      </div>
+      <!-- Servicio 5 -->
+      <div class="service-item">
+        <div class="service-icon">📊</div>
+        <h3 class="service-title">Análisis de Datos</h3>
+        <p class="service-description">Insights accionables con dashboards y reportes.</p>
+      </div>
+      <!-- Servicio 6 -->
+      <div class="service-item">
+        <div class="service-icon">🎧</div>
+        <h3 class="service-title">Asistencia Virtual</h3>
+        <p class="service-description">Chatbots y asistentes inteligentes para atención 24/7.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>¿Qué quieres automatizar?</h2>
+    <p>Cuéntanos tus necesidades y te responderemos en menos de 24 horas.</p>
+    <div class="contact-form">
+      <form id="contactForm">
+        <label for="name">Tu Nombre *</label>
+        <input type="text" id="name" placeholder="Nombre completo" required>
+
+        <label for="email">Tu Email *</label>
+        <input type="email" id="email" placeholder="correo@empresa.es" required>
+
+        <label for="message">¿Qué proceso te gustaría automatizar?</label>
+        <textarea id="message" rows="4" placeholder="Describe tu proceso, problemas actuales y objetivos..." required></textarea>
+
+        <button type="button" onclick="submitForm()">Enviar Consulta</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="call-now">
+    <h2>Llámanos Ahora</h2>
+    <p>Hablemos directamente sobre tu proyecto de automatización</p>
+    <div class="phone-cards">
+      <!-- Teléfono Principal -->
+      <div class="phone-card">
+        <div class="phone-icon">📞</div>
+        <div class="phone-title">Teléfono Principal</div>
+        <div class="phone-number">+34 681 66 12 96</div>
+        <a href="tel:+34681661296" class="call-btn">
+          <span>📞</span> Llamar Ahora
+        </a>
+      </div>
+
+      <!-- Teléfono Alternativo -->
+      <div class="phone-card">
+        <div class="phone-icon">📞</div>
+        <div class="phone-title">Teléfono Alternativo</div>
+        <div class="phone-number">+34 601 00 37 32</div>
+        <a href="tel:+34601003732" class="call-btn">
+          <span>📞</span> Llamar Ahora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <h2>AutomizeAI</h2>
+    <p>Transformando el futuro empresarial con Inteligencia Artificial</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidad</a> | 
+      <a href="#">Términos de Servicio</a>
+    </div>
+    <div class="email-list">
+      <p>Contacto:</p>
+      <a href="mailto:alik@automizeai.es">alik@automizeai.es</a> | 
+      <a href="mailto:marc@automizeai.es">marc@automizeai.es</a>
+    </div>
     <p>&copy; 2025 AutomizeAI. Todos los derechos reservados.</p>
-    <p>Contacto: hola@automizeai.es</p>
   </footer>
 
+  <script>
+    function calculateSavings() {
+      const hours = parseFloat(document.getElementById('hours').value);
+      const cost = parseFloat(document.getElementById('cost').value);
+      const employees = parseInt(document.getElementById('employees').value);
+      const process = document.getElementById('process').value;
+
+      if (!hours || !cost || !employees) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      const weeklySavings = hours * cost * employees;
+      const monthlySavings = weeklySavings * 4;
+      const annualSavings = monthlySavings * 12;
+
+      // Mostrar resultados
+      alert(`Ahorro estimado:\n\nMensual: €${monthlySavings.toFixed(2)}\nAnual: €${annualSavings.toFixed(2)}`);
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (!name || !email || !message) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      // Aquí puedes añadir un envío real a un servidor si lo necesitas
+      // Por ahora, solo mostramos un mensaje
+      alert('Gracias por tu consulta. Te responderemos en menos de 24 horas.');
+      document.getElementById('contactForm').reset();
+    }
+  </script>
 </body>
 </html>
