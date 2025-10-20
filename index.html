@@ -8,7 +8,6 @@
   <meta name="keywords" content="automatización, automatización de procesos, sin código, zapier, make, automatización empresarial" />
   <meta name="author" content="AutomizeAI" />
 
-  <!-- Estilos -->
   <style>
     * {
       margin: 0;
@@ -21,12 +20,12 @@
       color: #333;
       line-height: 1.6;
     }
+
+    /* Header no fijo */
     header {
       background: #000;
       color: white;
       padding: 1rem 0;
-      position: sticky;
-      top: 0;
       z-index: 100;
     }
     .header-container {
@@ -41,51 +40,102 @@
       width: 200px;
       height: auto;
     }
+
     .menu-toggle {
       display: none;
       cursor: pointer;
       font-size: 1.5rem;
-      color: #0066cc;
+      color: white;
     }
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 1.2rem;
     }
     .nav-links a {
-      color: #0066cc;
+      color: white;
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.3s;
+      transition: color 0.3s;
     }
     .nav-links a:hover {
       color: #00bfff;
     }
 
-    /* Menú desplegable en móvil */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background: #000;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-      .nav-links.active {
-        display: flex;
-      }
-      .nav-links a {
-        padding: 0.8rem 1rem;
-        text-align: center;
-      }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      min-width: 220px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      flex-direction: column;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      color: #00bfff !important;
+      padding: 0.75rem 1.2rem;
+      display: block;
+      text-align: left;
+    }
+    .dropdown:hover .dropdown-content {
+      display: flex;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 998;
+    }
+    .overlay.active {
+      display: block;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: #000;
+      flex-direction: column;
+      padding: 5rem 1rem 1rem;
+      transition: all 0.4s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+    .mobile-menu.active {
+      right: 0;
+    }
+    .close-menu {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+    .mobile-menu li {
+      margin-bottom: 1.2rem;
+    }
+    .mobile-menu .dropdown-content {
+      display: none;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+      border-left: 2px solid #00bfff;
+    }
+    .mobile-menu .dropdown.active .dropdown-content {
+      display: block;
     }
 
     .hero {
@@ -93,562 +143,311 @@
       color: white;
       text-align: center;
       padding: 4rem 1rem;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      line-height: 1.2;
     }
     .hero p {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
       max-width: 800px;
+      margin: 0 auto 2rem;
     }
-    .hero .benefits {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .benefit {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      margin: 0.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-    .btn-green {
-      background: #28a745;
-      color: white;
-      border: none;
-    }
-    .btn-purple {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid #ffffff;
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-    }
+
     .section {
-      padding: 4rem 1rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
       text-align: center;
     }
     .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #0066cc;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #000;
     }
     .section p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      color: #333;
+      color: #555;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      font-size: 0.95rem;
     }
-    .service-card {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      width: 350px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-      border: 1px solid #e0e0e0;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-    .service-icon {
-      width: 50px;
-      height: 50px;
+    .btn-blue {
       background: #0066cc;
       color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #002b74;
-    }
-    .problem {
-      background: #ffebee;
-      border-left: 3px solid #d32f2f;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      color: #d32f2f;
-      font-size: 0.9rem;
-    }
-    .solution {
-      background: #e8f5e8;
-      border-left: 3px solid #4caf50;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      color: #4caf50;
-      font-size: 0.9rem;
-    }
-    .saving {
-      background: #e3f2fd;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .saving strong {
-      color: #0066cc;
-      font-size: 1.2rem;
-    }
-    .implementation {
-      color: #0066cc;
-      font-size: 0.9rem;
-    }
-    .cta-section {
-      background: linear-gradient(135deg, #0066cc, #003399);
-      color: white;
-      text-align: center;
-      padding: 4rem 1rem;
-      margin: 4rem 0;
-    }
-    .cta-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .cta-section p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
     }
     .btn-white {
       background: white;
       color: #0066cc;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: all 0.3s;
+      border: 2px solid #0066cc;
     }
-    .btn-white:hover {
-      background: #f0f0f0;
+
+    .cta-section {
+      text-align: center;
+      background: #000;
+      color: white;
+      padding: 3rem 1rem;
+      margin: 3rem 0;
     }
+    .cta-section h2 {
+      color: white;
+    }
+    .cta-section p {
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
     .calculator-form {
-      background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 500px;
+      max-width: 600px;
       margin: 2rem auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     .calculator-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: #333;
+      text-align: left;
+      font-weight: 600;
+      color: #000;
     }
-    .calculator-form input, .calculator-form select {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+    .calculator-form input,
+    .calculator-form select {
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 1rem;
     }
     .calculator-form button {
-      background: #28a745;
+      padding: 0.8rem;
+      background: #0066cc;
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      font-weight: bold;
+      border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      font-size: 1rem;
     }
-    .calculator-form button:hover {
-      background: #218838;
-    }
+
     .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     .testimonial-card {
       background: white;
       border-radius: 12px;
       padding: 1.5rem;
-      width: 350px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .testimonial-header {
       display: flex;
       align-items: center;
+      gap: 1rem;
       margin-bottom: 1rem;
     }
     .testimonial-avatar {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      margin-right: 1rem;
+      object-fit: cover;
     }
     .testimonial-name {
-      font-weight: bold;
-      color: #333;
+      font-weight: 600;
+      color: #000;
     }
-    .testimonial-role {
-      font-size: 0.9rem;
+    .testimonial-role, .testimonial-company {
+      font-size: 0.85rem;
       color: #666;
     }
-    .testimonial-company {
-      color: #0066cc;
-      font-weight: bold;
-    }
     .stars {
-      color: #ffc107;
+      color: gold;
       margin: 0.5rem 0;
     }
-    .testimonial-text {
-      margin-bottom: 1rem;
-      font-style: italic;
-      color: #333;
-    }
     .results-obtained {
-      background: #e3f2fd;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 5px;
-    }
-    .results-obtained strong {
+      margin: 1rem 0;
+      font-weight: bold;
       color: #0066cc;
     }
     .before-after {
-      margin-bottom: 1rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .before, .after {
+      margin: 0.3rem 0;
     }
     .before {
-      background: #ffebee;
-      border-left: 3px solid #d32f2f;
-      padding: 1rem;
-      margin-bottom: 1rem;
       color: #d32f2f;
-      font-size: 0.9rem;
     }
     .after {
-      background: #e8f5e8;
-      border-left: 3px solid #4caf50;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      color: #4caf50;
-      font-size: 0.9rem;
+      color: #2e7d32;
     }
+
     .about-section {
-      padding: 4rem 1rem;
-      text-align: left;
+      text-align: center;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 4rem auto;
+      padding: 0 1rem;
     }
-    .about-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #002b74;
-    }
-    .about-subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 2rem;
-    }
-    .about-mission {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .mission-icon {
-      width: 50px;
-      height: 50px;
-      background: #0066cc;
-      color: white;
-      border-radius: 10px;
+    .about-mission, .about-vision {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
+      align-items: flex-start;
+      gap: 1rem;
+      margin: 2rem 0;
+      text-align: left;
     }
-    .mission-title {
-      font-weight: bold;
-      color: #333;
+    .mission-icon, .vision-icon {
+      font-size: 2rem;
     }
+    .mission-title, .vision-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
     .stats {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin: 4rem 0;
+      flex-wrap: wrap;
+      margin: 3rem 0;
+      padding: 2rem 1rem;
+      background: #000;
+      color: white;
     }
     .stat-card {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #e0e0e0;
-    }
-    .stat-icon {
-      width: 50px;
-      height: 50px;
-      background: #0066cc;
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
     }
     .stat-number {
       font-size: 2rem;
       font-weight: bold;
-      color: #002b74;
+      margin: 0.5rem 0;
     }
-    .stat-label {
-      font-size: 0.9rem;
-      color: #666;
-    }
+
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     .service-item {
       background: white;
-      border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
     }
-    .service-icon {
-      width: 50px;
-      height: 50px;
-      background: #0066cc;
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .service-item .service-icon {
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
     .service-title {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #002b74;
+      margin: 1rem 0;
+      color: #000;
     }
-    .service-description {
-      color: #666;
-      font-size: 0.9rem;
-    }
-    .final-cta {
-      background: linear-gradient(135deg, #0066cc, #003399);
-      color: white;
-      text-align: center;
-      padding: 4rem 1rem;
-      margin: 4rem 0;
-    }
-    .final-cta h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .final-cta p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-    }
+
     .contact-form {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 2rem;
       max-width: 600px;
       margin: 2rem auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0 1rem;
     }
     .contact-form label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: white;
+      text-align: left;
+      margin: 1rem 0 0.5rem;
+      font-weight: 600;
+      color: #000;
     }
-    .contact-form input, .contact-form textarea {
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 1rem;
     }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
     .contact-form button {
-      background: #ff9800;
+      width: 100%;
+      padding: 0.8rem;
+      background: #0066cc;
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      font-weight: bold;
+      border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      font-size: 1rem;
+      margin-top: 1rem;
     }
-    .contact-form button:hover {
-      background: #e68a00;
-    }
+
     .call-now {
       text-align: center;
-      padding: 4rem 1rem;
-      background: #f8f9fa;
-    }
-    .call-now h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #0066cc;
-    }
-    .call-now p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      color: #333;
+      padding: 3rem 1rem;
+      background: #f0f0f0;
     }
     .phone-cards {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin: 2rem 0;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
     .phone-card {
       background: white;
+      padding: 1.5rem;
       border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #e0e0e0;
-      width: 300px;
-    }
-    .phone-icon {
-      width: 60px;
-      height: 60px;
-      background: #28a745;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .phone-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: #333;
-    }
-    .phone-number {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #28a745;
-      margin-bottom: 1rem;
+      width: 250px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .call-btn {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-block;
+      margin-top: 1rem;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
     }
-    .call-btn:hover {
-      background: #218838;
-    }
+
     .footer {
       background: #000;
-      color: #ccc;
+      color: white;
       text-align: center;
-      padding: 2rem;
-      margin-top: 3rem;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
     }
     .footer h2 {
-      color: #0066cc;
-      margin-bottom: 1rem;
+      color: white;
     }
-    .footer p {
-      margin-bottom: 1rem;
+    .footer-links, .email-list {
+      margin: 1rem 0;
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-    .footer-links a {
-      color: #ccc;
+    .footer a {
+      color: #00bfff;
       text-decoration: none;
     }
-    .footer-links a:hover {
-      color: #0066cc;
-    }
-    .email-list {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-    .email-list a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .email-list a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 768px) {
+
+    @media (max-width: 1023px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
       .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero .benefits {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .service-card {
-        width: 100%;
-      }
-      .testimonial-card {
-        width: 100%;
-      }
-      .phone-cards {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .phone-card {
-        width: 100%;
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -657,107 +456,74 @@
 
   <header>
     <div class="header-container">
-      <!-- ✅ Logo real desde Google Drive -->
       <img src="https://lh3.googleusercontent.com/d/1WbD9obfo9B3ZFvoqyWOFHDu4mOf77gDr=s0" alt="Logo AutomizeAI" class="logo">
 
-      <!-- Botón de menú para móviles -->
-      <div class="menu-toggle" id="menuToggle">☰</div>
-
-      <!-- Menú principal con solo las opciones solicitadas -->
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#testimonials">Testimonios</a></li>
-        <li><a href="#calculator">Calculadora</a></li>
-        <li><a href="#about">Sobre Nosotros</a></li>
-        <li><a href="#contact">Contacto</a></li>
+      <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Procesos</a>
+          <div class="dropdown-content">
+            <a href="#">Facturación Automática</a>
+            <a href="#">Gestión de Inventario</a>
+            <a href="#">Atención al Cliente 24/7</a>
+            <a href="#">Reportes Automáticos</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Explorar</a>
+          <div class="dropdown-content">
+            <a href="#services">Servicios</a>
+            <a href="#testimonials">Testimonios</a>
+            <a href="#calculator">Calculadora</a>
+            <a href="#about">Sobre Nosotros</a>
+            <a href="#contact">Contacto</a>
+          </div>
+        </li>
+        <li><a href="tel:+34681661296">📞 +34 681 66 12 96</a></li>
       </ul>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      <ul class="mobile-menu" id="mobileMenu">
+        <div class="close-menu" id="closeMenu">×</div>
+        <li><a href="#hero">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Procesos</a>
+          <div class="dropdown-content">
+            <a href="#">Facturación Automática</a>
+            <a href="#">Gestión de Inventario</a>
+            <a href="#">Atención al Cliente 24/7</a>
+            <a href="#">Reportes Automáticos</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#">Explorar</a>
+          <div class="dropdown-content">
+            <a href="#services">Servicios</a>
+            <a href="#testimonials">Testimonios</a>
+            <a href="#calculator">Calculadora</a>
+            <a href="#about">Sobre Nosotros</a>
+            <a href="#contact">Contacto</a>
+          </div>
+        </li>
+        <li><a href="tel:+34681661296">📞 +34 681 66 12 96</a></li>
+        <li><a href="tel:+34601003732">📞 +34 601 00 37 32</a></li>
+      </ul>
+
+      <div class="overlay" id="overlay"></div>
     </div>
   </header>
 
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <h1>¿Pierdes 30 horas semanales en tareas repetitivas?</h1>
     <p>Automatizamos tu facturación, gestión de inventario, atención al cliente y reportes.<br><strong style="color: #00ff88;">Recupera tu tiempo. Multiplica tus beneficios.</strong></p>
-    <div class="benefits">
-      <div class="benefit"><span>⏱️</span> Ahorra 30h/semana</div>
-      <div class="benefit"><span>💶</span> ROI del 300%</div>
-      <div class="benefit"><span>📈</span> Elimina errores</div>
-    </div>
-    <div class="buttons">
-      <a href="#" class="btn btn-green">Ver Procesos Específicos →</a>
-      <a href="#" class="btn btn-purple">Calcular mi Ahorro</a>
-    </div>
+    <a href="#contact" class="btn btn-white">Quiero Mi Consulta Gratuita</a>
     <p style="margin-top: 2rem; font-size: 1rem; color: #00ff88;">Implementación en 2 semanas. Garantía de resultados.</p>
   </section>
 
-  <section class="section">
-    <h2>¿Cuál es tu problema exacto?</h2>
-    <p>Encuentra tu situación específica y descubre cómo puedes ahorrar tiempo y dinero</p>
-    <div style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;">
-      <button style="background: #0066cc; color: white; padding: 0.5rem 1rem; border: none; border-radius: 50px; font-size: 0.9rem;">Todos</button>
-      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Retail/E-commerce</button>
-      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Logística</button>
-      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Salud</button>
-      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Educación</button>
-      <button style="background: white; color: #0066cc; padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 50px; font-size: 0.9rem;">Servicios</button>
-    </div>
-  </section>
+  <!-- ✅ AHORA VIENE DIRECTAMENTE LA CALCULADORA -->
 
-  <div class="services">
-    <div class="service-card">
-      <div class="service-icon">📄</div>
-      <h3>Facturación Automática</h3>
-      <div class="problem">❌ Problema actual:<br>¿Pasas 8 horas semanales creando facturas manualmente?</div>
-      <div class="solution">✅ Nuestra solución:<br>Sistema que genera y envía facturas automáticamente desde tu CRM</div>
-      <div class="saving">
-        <strong>Ahorra 8h/semana = 1,280€/mes</strong>
-        <span class="implementation">Implementación: 2 semanas</span>
-      </div>
-      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">📦</div>
-      <h3>Gestión de Inventario</h3>
-      <div class="problem">❌ Problema actual:<br>¿Te quedas sin stock o tienes exceso sin darte cuenta?</div>
-      <div class="solution">✅ Nuestra solución:<br>Control automático con alertas y reposición inteligente</div>
-      <div class="saving">
-        <strong>Reduce costos 25% = 2,500€/mes</strong>
-        <span class="implementation">Implementación: 3 semanas</span>
-      </div>
-      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">💬</div>
-      <h3>Atención al Cliente 24/7</h3>
-      <div class="problem">❌ Problema actual:<br>¿Pierdes clientes fuera del horario comercial?</div>
-      <div class="solution">✅ Nuestra solución:<br>Chatbot IA que resuelve 80% de consultas automáticamente</div>
-      <div class="saving">
-        <strong>Aumenta ventas 30% = 4,000€/mes</strong>
-        <span class="implementation">Implementación: 1 semana</span>
-      </div>
-      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">📊</div>
-      <h3>Reportes Automáticos</h3>
-      <div class="problem">❌ Problema actual:<br>¿Dedicas días enteros a crear informes mensuales?</div>
-      <div class="solution">✅ Nuestra solución:<br>Dashboards que se actualizan solos con datos en tiempo real</div>
-      <div class="saving">
-        <strong>Ahorra 16h/mes = 640€/mes</strong>
-        <span class="implementation">Implementación: 2 semanas</span>
-      </div>
-      <a href="#" class="btn btn-blue">Quiero Automatizar Esto →</a>
-    </div>
-  </div>
-
-  <section class="cta-section">
-    <h2>¿No ves tu proceso específico?</h2>
-    <p>Cuéntanos tu situación y te mostraremos cómo automatizarla</p>
-    <a href="#" class="btn btn-white">Consulta Gratuita Personalizada</a>
-  </section>
-
+  <!-- Calculadora -->
   <section class="section" id="calculator">
     <h2>Calculadora de Ahorro Potencial</h2>
     <p>Complete el formulario para ver tus ahorros potenciales</p>
@@ -784,13 +550,14 @@
     </div>
   </section>
 
+  <!-- Testimonios -->
   <section class="section" id="testimonials">
     <h2>Resultados Reales</h2>
     <p>Empresarios reales comparten sus resultados específicos después de automatizar</p>
     <div class="testimonials">
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.imgur.com/6kKZvXf.png" alt="María González" class="testimonial-avatar">
+          <img src="https://lh3.googleusercontent.com/d/1WbD9obfo9B3ZFvoqyWOFHDu4mOf77gDr=s0" alt="María González" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">María González</div>
             <div class="testimonial-role">Directora Comercial</div>
@@ -800,7 +567,7 @@
         <div class="stars">★★★★★</div>
         <div class="testimonial-text">"Automatizar la facturación fue un antes y un después. Lo que me tomaba 8 horas semanales ahora se hace solo."</div>
         <div class="results-obtained">
-          <strong>8 horas/semana</strong> $ 1,280€/mes<br>
+          <strong>8 horas/semana</strong> — 1,280€/mes<br>
           Proceso: Facturación automática
         </div>
         <div class="before-after">
@@ -811,7 +578,7 @@
 
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.imgur.com/6kKZvXf.png" alt="Carlos Ruiz" class="testimonial-avatar">
+          <img src="https://lh3.googleusercontent.com/d/1WbD9obfo9B3ZFvoqyWOFHDu4mOf77gDr=s0" alt="Carlos Ruiz" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Carlos Ruiz</div>
             <div class="testimonial-role">CEO</div>
@@ -821,7 +588,7 @@
         <div class="stars">★★★★★</div>
         <div class="testimonial-text">"El control de inventario en tiempo real eliminó completamente los desabastecimientos. Nuestros clientes están mucho más satisfechos."</div>
         <div class="results-obtained">
-          <strong>15 horas/semana</strong> $ 2,500€/mes<br>
+          <strong>15 horas/semana</strong> — 2,500€/mes<br>
           Proceso: Gestión de inventario
         </div>
         <div class="before-after">
@@ -832,7 +599,7 @@
 
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.imgur.com/6kKZvXf.png" alt="Ana Martín" class="testimonial-avatar">
+          <img src="https://lh3.googleusercontent.com/d/1WbD9obfo9B3ZFvoqyWOFHDu4mOf77gDr=s0" alt="Ana Martín" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Ana Martín</div>
             <div class="testimonial-role">Gerente</div>
@@ -842,7 +609,7 @@
         <div class="stars">★★★★★</div>
         <div class="testimonial-text">"El chatbot atiende clientes 24/7. Hemos aumentado las ventas un 150% y yo duermo tranquila sabiendo que no perdemos ningún cliente."</div>
         <div class="results-obtained">
-          <strong>20 horas/semana</strong> $ 4,000€/mes<br>
+          <strong>20 horas/semana</strong> — 4,000€/mes<br>
           Proceso: Atención al cliente automatizada
         </div>
         <div class="before-after">
@@ -853,12 +620,14 @@
     </div>
   </section>
 
+  <!-- CTA final -->
   <section class="cta-section">
     <h2>¿Quieres resultados como estos?</h2>
     <p>Cuéntanos tu proceso y te mostraremos cómo automatizarlo</p>
-    <a href="#" class="btn btn-white">Quiero Mi Consulta Gratuita</a>
+    <a href="#contact" class="btn btn-white">Quiero Mi Consulta Gratuita</a>
   </section>
 
+  <!-- Sobre nosotros -->
   <section class="about-section" id="about">
     <h2 class="about-title">Sobre AutomizeAI</h2>
     <p class="about-subtitle">Innovación tecnológica al servicio de tu empresa</p>
@@ -878,6 +647,7 @@
     </div>
   </section>
 
+  <!-- Estadísticas -->
   <div class="stats">
     <div class="stat-card">
       <div class="stat-icon">🏆</div>
@@ -901,6 +671,7 @@
     </div>
   </div>
 
+  <!-- Servicios -->
   <section class="section" id="services">
     <h2>Nuestros Servicios</h2>
     <p>Soluciones tecnológicas integrales para tu empresa</p>
@@ -938,7 +709,8 @@
     </div>
   </section>
 
-  <section class="final-cta" id="contact">
+  <!-- Contacto -->
+  <section class="section" id="contact">
     <h2>¿Qué quieres automatizar?</h2>
     <p>Cuéntanos tus necesidades y te responderemos en menos de 24 horas.</p>
     <div class="contact-form">
@@ -957,6 +729,7 @@
     </div>
   </section>
 
+  <!-- Teléfonos -->
   <section class="call-now">
     <h2>Llámanos Ahora</h2>
     <p>Hablemos directamente sobre tu proyecto de automatización</p>
@@ -980,6 +753,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <h2>AutomizeAI</h2>
     <p>Transformando el futuro empresarial con Inteligencia Artificial</p>
@@ -996,13 +770,34 @@
   </footer>
 
   <script>
-    // Menú desplegable
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
+      const closeMenu = document.getElementById('closeMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
 
-      menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.querySelectorAll('.mobile-menu .dropdown').forEach(d => d.classList.remove('active'));
+      }
+
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closeMenu.addEventListener('click', closeMobileMenu);
+      overlay.addEventListener('click', closeMobileMenu);
+      
+      const mobileDropdowns = mobileMenu.querySelectorAll('.dropdown > a');
+      mobileDropdowns.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('active');
+        });
       });
     });
 
@@ -1036,6 +831,6 @@
       document.getElementById('contactForm').reset();
     }
   </script>
+
 </body>
 </html>
-
