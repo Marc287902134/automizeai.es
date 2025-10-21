@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad - AutomizeAI</title>
+  <style>
+    body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; padding: 40px; background: #000; color: #fff; max-width: 800px; margin: 0 auto; }
+    a { color: #00aaff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2 { margin: 1.8rem 0 1rem; }
+    p { margin-bottom: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>Política de Privacidad</h1>
+  
+  <h2>Responsable del tratamiento</h2>
+  <p>Los datos personales recogidos a través de esta web son tratados por <strong>Marc Pérez</strong>, profesional autónomo responsable de la marca <strong>AutomizeAI</strong>, con domicilio en <strong>Valencia, Valencia</strong>, y correo de contacto: <a href="mailto:marc@automizeai.es">marc@automizeai.es</a>.</p>
+
+  <h2>Finalidad y legitimación</h2>
+  <p>Los datos (nombre, email y mensaje) se utilizan exclusivamente para responder a solicitudes de diagnóstico gratuito y gestionar consultas comerciales. La base legal es el <strong>consentimiento explícito</strong> del usuario al enviar el formulario.</p>
+
+  <h2>Derechos del usuario</h2>
+  <p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad contactando por email con el asunto “Protección de Datos”.</p>
+
+  <h2>Conservación de los datos</h2>
+  <p>Los datos se conservarán mientras exista interés legítimo en la relación comercial o durante los plazos legalmente establecidos.</p>
+
+  <h2>Confidencialidad y terceros</h2>
+  <p>No se ceden datos a terceros, salvo obligación legal. Esta web no utiliza cookies ni sistemas de rastreo.</p>
+</body>
+</html>
