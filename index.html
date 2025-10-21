@@ -13,7 +13,8 @@
       --bg: #000;
       --text: #fff;
       --text-secondary: #aaa;
-      --accent: #00ff88;
+      --accent: #00aaff; /* ✅ AHORA AZUL EN TODOS LOS TEXTOS E ÍCONOS */
+      --accent-green: #00ff88; /* ✅ Verde reservado solo para "Llamar ahora" */
       --card-bg: #0a0a0a;
       --border: #222;
     }
@@ -32,9 +33,8 @@
       overflow-x: hidden;
     }
 
-    /* ✅ Header con padding mínimo para logo muy grande */
     header {
-      padding: 0.4rem 5%; /* Ajustado para 110px */
+      padding: 0.4rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -42,7 +42,6 @@
       position: relative;
       z-index: 100;
     }
-    /* ✅ LOGO MUY GRANDE: 110px / 100px */
     .logo {
       height: 110px;
     }
@@ -59,13 +58,13 @@
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2rem; /* Ligeramente reducido */
+      gap: 2rem;
     }
     .nav-links a {
       color: var(--text);
       text-decoration: none;
       font-weight: 400;
-      font-size: 16px; /* Un punto más pequeño para equilibrar */
+      font-size: 16px;
       opacity: 0.9;
       transition: opacity 0.2s;
     }
@@ -147,9 +146,11 @@
       line-height: 1.4;
     }
     .hero p strong {
-      color: var(--accent);
+      color: var(--accent); /* ✅ Ahora azul */
       font-weight: 600;
     }
+
+    /* Botón genérico (Agendar diagnóstico) → azul */
     .btn {
       display: inline-block;
       background: transparent;
@@ -163,7 +164,16 @@
       transition: all 0.3s ease;
     }
     .btn:hover {
-      background: rgba(0, 255, 136, 0.08);
+      background: rgba(0, 170, 255, 0.08);
+    }
+
+    /* ✅ Botón "Llamar ahora" → VERDE (excepción) */
+    .btn-call {
+      color: var(--accent-green) !important;
+      border-color: var(--accent-green) !important;
+    }
+    .btn-call:hover {
+      background: rgba(0, 255, 136, 0.08) !important;
     }
 
     .section {
@@ -208,7 +218,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--accent); /* ✅ Ahora azul */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -231,7 +241,7 @@
       font-weight: 400;
     }
     .results-obtained {
-      background: rgba(0, 255, 136, 0.08);
+      background: rgba(0, 170, 255, 0.08);
       color: var(--accent);
       padding: 0.9rem;
       border-radius: 12px;
@@ -253,7 +263,7 @@
     .step-number {
       font-size: 2.2rem;
       margin-bottom: 1.2rem;
-      color: var(--accent);
+      color: var(--accent); /* ✅ Ahora azul */
     }
     .step h3 {
       font-size: 1.4rem;
@@ -278,7 +288,7 @@
     .service-icon {
       font-size: 2.4rem;
       margin-bottom: 1.2rem;
-      color: var(--accent);
+      color: var(--accent); /* ✅ Ahora azul */
     }
     .service-title {
       font-size: 1.3rem;
@@ -368,7 +378,7 @@
     }
     .call-btn {
       display: inline-block;
-      color: var(--accent);
+      color: var(--accent-green); /* ✅ Verde para "Llamar ahora" */
       text-decoration: none;
       font-weight: 500;
       margin-top: 1rem;
@@ -402,10 +412,10 @@
 
     @media (max-width: 768px) {
       .logo {
-        height: 100px; /* ✅ 100px en móvil */
+        height: 100px;
       }
       header {
-        padding: 0.3rem 5%; /* Ajuste fino para móvil */
+        padding: 0.3rem 5%;
       }
       .hero {
         padding: 4rem 5% 5rem;
@@ -450,11 +460,10 @@
     <div class="overlay" id="overlay"></div>
   </header>
 
-  <!-- Resto del contenido sin cambios -->
   <section class="hero" id="hero">
     <h1>¿Sigues perdiendo ventas porque tu equipo está atrapado en tareas manuales?</h1>
     <p>Automatizamos tus procesos en <strong>14 días</strong>. Sin código. Sin riesgos.<br>
-    <strong style="color: var(--accent);">Resultados medibles en euros, no en promesas.</strong></p>
+    <strong>Resultados medibles en euros, no en promesas.</strong></p>
     <a href="#contact" class="btn">Agendar diagnóstico gratuito</a>
   </section>
 
@@ -570,7 +579,7 @@
   <div class="final-cta">
     <h2>¿Listo para recuperar cientos de horas al año?</h2>
     <p>Agenda una llamada de 15 minutos y te diremos exactamente cómo automatizar tu negocio.</p>
-    <a href="tel:+34681661296" class="btn">Llamar ahora</a>
+    <a href="tel:+34681661296" class="btn btn-call">Llamar ahora</a>
   </div>
 
   <section class="section" id="contact">
@@ -647,7 +656,8 @@
       });
     });
 
-    function submitForm() {
+    async function submitForm() {
+      const form = document.getElementById('contactForm');
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const message = document.getElementById('message').value;
@@ -657,8 +667,46 @@
         return;
       }
 
-      alert('✅ ¡Gracias! Hemos recibido tu solicitud.\nTe contactaremos en menos de 24 horas.');
-      document.getElementById('contactForm').reset();
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+
+      try {
+        const response = await fetch('https://formspree.io/f/xqayoyqq', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const thankYouMessage = document.createElement('div');
+          thankYouMessage.innerHTML = `
+            <div style="
+              background: rgba(0, 170, 255, 0.1);
+              border: 1px solid var(--accent);
+              border-radius: 14px;
+              padding: 1.5rem;
+              margin-top: 1.5rem;
+              text-align: center;
+              color: var(--accent);
+              font-weight: 600;
+              font-size: 1.1rem;
+            ">
+              ✅ ¡Gracias! Hemos recibido tu solicitud.<br>
+              Te contactaremos en menos de 24 horas.
+            </div>
+          `;
+          form.style.display = 'none';
+          form.parentNode.appendChild(thankYouMessage);
+        } else {
+          alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+        }
+      } catch (error) {
+        alert('Error de conexión. Verifica tu conexión a internet e inténtalo de nuevo.');
+      }
     }
   </script>
 
