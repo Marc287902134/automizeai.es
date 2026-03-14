@@ -58,6 +58,7 @@ transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: var(--shadow-sm); }
 .nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 9px; letter-spacing: -0.01em; }
+/* === CAMBIO: AI en azul clarito (#5ab4f0) === */
 .nav-logo .logo-ai { color: var(--accent-light); }
 .nav-logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2.5s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
@@ -416,7 +417,7 @@ h2 { font-size: 2rem; }
 <line x1="2" y1="8" x2="4" y2="8" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 <line x1="2" y1="14" x2="4" y2="14" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
-automizeAI
+automize<span class="logo-ai">AI</span>
 </a>
 <div class="nav-links">
 <a href="#servicios">Servicios</a>
@@ -424,7 +425,7 @@ automizeAI
 <a href="#precios">Presupuesto</a>
 <a href="#equipo">Equipo</a>
 <a href="#faq">FAQ</a>
-<a href="https://calendly.com/marc-automizeai/30min" class="nav-cta">Llamada gratis →</a>
+<a href="#contacto" class="nav-cta">Llamada gratis →</a>
 </div>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
 <span></span><span></span><span></span>
@@ -436,7 +437,7 @@ automizeAI
 <a href="#precios" onclick="toggleMenu()">Presupuesto</a>
 <a href="#equipo" onclick="toggleMenu()">Equipo</a>
 <a href="#faq" onclick="toggleMenu()">FAQ</a>
-<a href="https://calendly.com/marc-automizeai/30min" onclick="toggleMenu()" style="color:#00b880;font-weight:600">Llamada gratis →</a>
+<a href="#contacto" onclick="toggleMenu()" style="color:#00b880;font-weight:600">Llamada gratis →</a>
 </div>
 <!-- HERO -->
 <section id="hero">
@@ -455,7 +456,7 @@ a la semana con IA
 Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 semanas. Sin código. Sin complicaciones. Con resultados medibles desde el día 1.
 </p>
 <div class="hero-ctas fade-up fade-up-d2">
-<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent">Agenda llamada gratuita <span class="arrow-icon">→</span></a>
+<a href="#contacto" class="btn-accent">Agenda llamada gratuita <span class="arrow-icon">→</span></a>
 <a href="#resultados" class="btn-secondary">Ver casos de éxito</a>
 </div>
 <div class="hero-trust fade-up fade-up-d3">
@@ -536,7 +537,7 @@ Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 seman
 </div>
 <div class="lead-form">
 <input type="email" class="lead-input" placeholder="tu@email.com">
-<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent" style="padding:13px 24px; font-size:0.9rem; color:#fff;">Descargar gratis →</a>
+<a href="#contacto" class="btn-accent" style="padding:13px 24px; font-size:0.9rem; color:#fff;">Descargar gratis →</a>
 </div>
 </div>
 </div>
@@ -734,7 +735,7 @@ Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 seman
 </div>
 </div>
 <div style="text-align:center; margin-top:40px;">
-<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent">Solicitar presupuesto gratuito <span class="arrow-icon">→</span></a>
+<a href="#contacto" class="btn-accent">Solicitar presupuesto gratuito <span class="arrow-icon">→</span></a>
 <p style="margin-top:16px; font-size:0.85rem; color:var(--text-light);">Respuesta garantizada en menos de 24 horas laborables</p>
 </div>
 </div>
@@ -861,7 +862,7 @@ Ver perfil
 <div class="cta-feature"><span class="cta-feature-dot"></span> Respuesta en menos de 24h</div>
 </div>
 <div class="cta-buttons fade-up fade-up-d3">
-<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent" style="background:var(--accent);color:#fff;">
+<a href="tel:+34900000000" class="btn-accent" style="background:var(--accent);color:#fff;">
 📅 Reservar llamada gratuita <span class="arrow-icon">→</span>
 </a>
 <a href="mailto:automizeai@automizeai.es" class="btn-secondary btn-ghost">
@@ -892,7 +893,7 @@ O escríbenos directamente a <strong style="color:rgba(255,255,255,0.6);">automi
 <line x1="2" y1="8" x2="4" y2="8" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 <line x1="2" y1="14" x2="4" y2="14" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
-automizeAI
+automize<span class="logo-ai">AI</span>
 </a>
 <p>Automatizamos los procesos repetitivos de las PYMEs españolas con IA. Más tiempo, menos errores, más crecimiento.</p>
 </div>
