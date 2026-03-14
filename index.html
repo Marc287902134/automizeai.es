@@ -57,6 +57,7 @@ border-bottom: 1px solid var(--border);
 transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: var(--shadow-sm); }
+/* === LOGO CORREGIDO - automizeAI junto sin espacio === */
 .nav-logo { 
   font-family: 'Syne', sans-serif; 
   font-weight: 700; 
@@ -69,14 +70,17 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   letter-spacing: -0.01em; 
   white-space: nowrap;
 }
-/* === CAMBIO: AI en azul clarito PERO todo junto === */
+.nav-logo svg {
+  flex-shrink: 0;
+}
+/* El texto completo está en un span, sin gap interno */
+.nav-logo .logo-text {
+  display: inline;
+}
+/* AI en azul clarito, pero junto a "automize" */
 .nav-logo .logo-ai { 
   color: var(--accent-light); 
   display: inline;
-  margin-left: 0;
-}
-.nav-logo svg {
-  flex-shrink: 0;
 }
 .nav-logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2.5s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
@@ -435,7 +439,7 @@ h2 { font-size: 2rem; }
 <line x1="2" y1="8" x2="4" y2="8" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 <line x1="2" y1="14" x2="4" y2="14" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
-automize<span class="logo-ai">AI</span>
+<span class="logo-text">automize<span class="logo-ai">AI</span></span>
 </a>
 <div class="nav-links">
 <a href="#servicios">Servicios</a>
@@ -911,7 +915,7 @@ O escríbenos directamente a <strong style="color:rgba(255,255,255,0.6);">automi
 <line x1="2" y1="8" x2="4" y2="8" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 <line x1="2" y1="14" x2="4" y2="14" stroke="#1E8FE1" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
-automize<span class="logo-ai">AI</span>
+<span class="logo-text">automize<span class="logo-ai">AI</span></span>
 </a>
 <p>Automatizamos los procesos repetitivos de las PYMEs españolas con IA. Más tiempo, menos errores, más crecimiento.</p>
 </div>
