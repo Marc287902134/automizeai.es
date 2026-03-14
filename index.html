@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutomizeAI - Automatización de procesos empresariales</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- ✅ CAMBIO NUEVO: Calendly Widget -->
+    <title>AutomizeAI | Automatización Inteligente de Procesos Empresariales | España</title>
+    <meta name="description" content="🚀 Especialistas en automatización RPA y procesos empresariales. Reducimos costos hasta 95%, integramos sistemas y optimizamos flujos de trabajo. ✅ Evaluación gratuita.">
+    <meta name="keywords" content="automatización procesos, RPA España, integración sistemas, optimización empresarial">
+    
+    <!-- Calendly Widget -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     
     <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-blue: #00d4ff;
+            --electric-blue: #0066ff;
+            --gray-text: #b3b3b3;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #1a1f3a;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
+            color: var(--white);
+            background: var(--primary-dark);
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,575 +50,871 @@
         }
 
         /* Header */
-        header {
+        .header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
         }
 
-        nav {
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            min-height: 70px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
+            gap: 0.8rem;
             text-decoration: none;
-            color: var(--text-primary);
+            transition: all 0.3s;
         }
 
-        .logo-icon {
+        .logo:hover {
+            transform: translateY(-1px);
+        }
+
+        .logo__icon {
             width: 40px;
             height: 40px;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
         }
 
-        /* ✅ CAMBIO 1: Clase para AI en color */
-        .ai-accent {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .logo__text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* CAMBIO APLICADO: AI en color azul gradiente */
+        .logo__text .ai-accent {
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        .cta-button {
-            background: var(--gradient);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
             cursor: pointer;
-            border: none;
+            padding: 4px;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        .nav__toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 2px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav__menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: var(--gray-text);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav__link:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav__link:hover::after {
+            width: 100%;
+        }
+
+        /* CAMBIO APLICADO: Botón conectado a Calendly */
+        .nav__cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav__cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
         }
 
         /* Hero */
         .hero {
-            padding: 150px 20px 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            position: relative;
+            background: var(--gradient-dark);
+            overflow: hidden;
+            padding-top: 70px;
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+            animation: heroGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: heroFadeIn 1.2s ease-out;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero__title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+        .hero__subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2.5rem;
+            color: var(--gray-text);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
         }
 
-        .hero-buttons {
+        .hero__cta {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 1rem 2rem;
+            border: none;
             border-radius: 8px;
-            text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: transform 0.3s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            padding: 1rem 2rem;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s;
+            min-width: 160px;
         }
 
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: white;
+        .btn--primary {
+            background: var(--gradient-primary);
+            color: var(--white);
         }
 
-        /* ✅ CAMBIO 3: Stats mejorados para legibilidad móvil */
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn--secondary:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Stats Section - CAMBIO APLICADO: Mejor legibilidad en móvil */
         .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 4rem 0;
-            background: var(--bg-secondary);
+            padding: 6rem 0;
+            background: var(--secondary-dark);
         }
 
-        .stat {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            background: rgba(59, 130, 246, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-        }
-
-        .stat-number {
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Responsive para stats */
-        @media (max-width: 768px) {
-            .stat {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .stat-number {
-                font-size: 3.5rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .stat-label {
-                font-size: 1.15rem;
-            }
-        }
-
-        /* Services */
-        .services {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-        }
-
-        /* How it Works */
-        .how-it-works {
-            padding: 4rem 0;
-            background: var(--bg-secondary);
-        }
-
-        .steps {
+        .stats__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .step {
+        .stats__item {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
+            background: var(--primary-dark);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
         }
 
-        .step-number {
+        .stats__item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        /* CAMBIO APLICADO: Números más grandes y legibles */
+        .stats__number {
+            font-size: clamp(2.8rem, 8vw, 3.5rem);
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: block;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+
+        .stats__label {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--gray-text);
+            line-height: 1.4;
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 0;
+            background: var(--primary-dark);
+        }
+
+        .section__header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section__title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section__subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--secondary-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .service-card__icon {
             width: 60px;
             height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
+        }
+
+        .service-card__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .service-card__description {
+            color: var(--gray-text);
+            line-height: 1.6;
         }
 
         /* Contact */
         .contact {
-            padding: 4rem 0;
+            padding: 6rem 0;
+            background: var(--secondary-dark);
         }
 
-        .contact-grid {
+        .contact__content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .contact-info {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
-        .contact-item {
-            display: flex;
+            gap: 4rem;
             align-items: start;
+        }
+
+        .contact__info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact__subtitle {
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact__methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
             gap: 1rem;
+            padding: 1rem;
+            background: var(--primary-dark);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+
+        .contact-method__icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-method__title {
+            color: var(--white);
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .contact-method__link {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20ba55;
+            transform: translateY(-2px);
+        }
+
+        .contact__form {
+            background: var(--primary-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .form__group {
             margin-bottom: 1.5rem;
         }
 
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-top: 0.25rem;
+        .form__label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 500;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        input, textarea {
+        .form__input,
+        .form__textarea {
+            width: 100%;
             padding: 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.2);
             border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
+            background: var(--secondary-dark);
+            color: var(--white);
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
 
-        input:focus, textarea:focus {
+        .form__input:focus,
+        .form__textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--accent-blue);
         }
 
-        textarea {
+        .form__textarea {
             resize: vertical;
-            min-height: 150px;
+            min-height: 120px;
         }
 
         /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        .footer {
+            background: var(--primary-dark);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 3rem 0 2rem;
         }
 
-        .footer-content {
+        .footer__content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .footer__logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             margin-bottom: 1rem;
         }
 
-        footer ul {
-            list-style: none;
+        .footer__title {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
-        footer a {
-            color: var(--text-secondary);
+        .footer__link {
+            color: var(--gray-text);
             text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
             transition: color 0.3s;
         }
 
-        footer a:hover {
-            color: var(--text-primary);
+        .footer__link:hover {
+            color: var(--accent-blue);
         }
 
-        .footer-bottom {
+        .footer__bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(59, 130, 246, 0.1);
-            color: var(--text-secondary);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: var(--gray-text);
         }
 
-        /* Responsive */
+        /* Responsive - CAMBIO APLICADO: Mejor en móvil */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            .nav__toggle {
+                display: flex;
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .nav__menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-dark);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                border-top: 1px solid rgba(0, 212, 255, 0.1);
             }
 
-            .hero-buttons {
+            .nav__menu.active {
+                transform: translateX(0);
+            }
+
+            .hero__cta {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .btn-primary, .btn-secondary {
+            .btn {
                 width: 100%;
-                max-width: 300px;
-                text-align: center;
+                max-width: 280px;
+            }
+
+            .contact__content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats__grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* CAMBIO APLICADO: Estadísticas aún más grandes en móvil */
+            .stats__item {
+                padding: 3rem 2rem;
+            }
+
+            .stats__number {
+                font-size: 3.5rem !important;
+                margin-bottom: 1rem;
+            }
+
+            .stats__label {
+                font-size: 1.2rem !important;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <!-- ✅ CAMBIO 1: Logo con AutomizeAI junto y AI en color -->
-            <div class="logo">
-                <div class="logo-icon">🤖</div>
-                <span>Automize<span class="ai-accent">AI</span></span>
-            </div>
-            <ul>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#como-funciona">Cómo funciona</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <!-- CAMBIO APLICADO: Logo con AutomizeAI junto, AI en color -->
+            <a href="#inicio" class="logo">
+                <div class="logo__icon">AI</div>
+                <div class="logo__text">Automize<span class="ai-accent">AI</span></div>
+            </a>
+            
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#inicio" class="nav__link">Inicio</a></li>
+                <li><a href="#servicios" class="nav__link">Servicios</a></li>
+                <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+                <li><a href="#contacto" class="nav__link">Contacto</a></li>
             </ul>
-            <!-- ✅ CAMBIO 2: Botón conectado con Calendly -->
-            <a href="#" class="cta-button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marc-automizeai/30min'});return false;">
-                Reserva una llamada
+            
+            <button class="nav__toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- CAMBIO APLICADO: Botón conectado a tu Calendly real -->
+            <a href="#" class="nav__cta" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marc-automizeai/30min'});return false;">
+                Reservar Llamada Gratuita
             </a>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Automatiza tu negocio y recupera tu tiempo</h1>
-            <p>Implementamos soluciones de automatización personalizadas que reducen tareas repetitivas y aumentan la productividad de tu equipo</p>
-            <div class="hero-buttons">
-                <a href="#contacto" class="btn-primary">Empezar ahora</a>
-                <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="hero__content">
+            <h1 class="hero__title">Automatización Inteligente de Procesos Empresariales</h1>
+            <p class="hero__subtitle">
+                Optimizamos tus tareas repetitivas, integramos sistemas y ahorramos tiempo valioso con herramientas de automatización avanzadas. Transforma tu empresa hacia la eficiencia digital.
+            </p>
+            <div class="hero__cta">
+                <a href="#servicios" class="btn btn--primary">Descubrir Servicios</a>
+                <a href="#contacto" class="btn btn--secondary">Evaluación Gratuita</a>
             </div>
         </div>
     </section>
 
-    <!-- ✅ CAMBIO 3: Stats mejorados para legibilidad móvil -->
-    <section class="stats">
+    <!-- Stats - CAMBIO APLICADO: Números más legibles -->
+    <section class="stats" id="nosotros">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div class="stat">
-                    <span class="stat-number">15h</span>
-                    <span class="stat-label">ahorro medio semanal</span>
+            <header class="section__header">
+                <h2 class="section__title">Resultados Comprobados</h2>
+                <p class="section__subtitle">Nuestros clientes experimentan mejoras significativas desde el primer mes</p>
+            </header>
+            
+            <div class="stats__grid">
+                <div class="stats__item">
+                    <span class="stats__number">15h</span>
+                    <span class="stats__label">ahorro medio semanal</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">semanas de implementación</span>
+                <div class="stats__item">
+                    <span class="stats__number">3</span>
+                    <span class="stats__label">semanas de implementación</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">40+</span>
-                    <span class="stat-label">procesos automatizados</span>
+                <div class="stats__item">
+                    <span class="stats__number">40+</span>
+                    <span class="stats__label">empresas transformadas</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Services -->
     <section class="services" id="servicios">
         <div class="container">
-            <h2 class="section-title">Nuestros servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Automatización de procesos</h3>
-                    <p>Identificamos y automatizamos tareas repetitivas para que tu equipo se enfoque en lo importante</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔗</div>
-                    <h3>Integraciones personalizadas</h3>
-                    <p>Conectamos tus herramientas y sistemas para que trabajen en sincronía</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Análisis y optimización</h3>
-                    <p>Monitorizamos y mejoramos continuamente tus procesos automatizados</p>
-                </div>
+            <header class="section__header">
+                <h2 class="section__title">Servicios de Automatización</h2>
+                <p class="section__subtitle">Especialistas en transformar procesos manuales en flujos automatizados eficientes</p>
+            </header>
+            
+            <div class="services__grid">
+                <article class="service-card">
+                    <div class="service-card__icon">🔄</div>
+                    <h3 class="service-card__title">Automatización de Procesos (RPA)</h3>
+                    <p class="service-card__description">Eliminamos tareas repetitivas mediante robots de software que trabajan 24/7, reduciendo errores humanos y liberando tiempo valioso de tu equipo.</p>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__icon">🔗</div>
+                    <h3 class="service-card__title">Integración de Sistemas</h3>
+                    <p class="service-card__description">Conectamos todas tus herramientas empresariales para crear un flujo de datos unificado y eliminar silos de información.</p>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__icon">📊</div>
+                    <h3 class="service-card__title">Automatización de Reportes</h3>
+                    <p class="service-card__description">Generación automática de informes personalizados con datos en tiempo real, distribución programada y dashboards interactivos.</p>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__icon">📧</div>
+                    <h3 class="service-card__title">Gestión Inteligente de Emails</h3>
+                    <p class="service-card__description">Clasificación automática, respuestas inteligentes y seguimiento de comunicaciones empresariales para optimizar la productividad.</p>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__icon">📋</div>
+                    <h3 class="service-card__title">Procesamiento de Documentos</h3>
+                    <p class="service-card__description">Digitalización, extracción de datos y clasificación automática de documentos empresariales con IA avanzada.</p>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__icon">⚙️</div>
+                    <h3 class="service-card__title">Workflows Personalizados</h3>
+                    <p class="service-card__description">Diseñamos flujos de trabajo automatizados específicos para las necesidades únicas de tu empresa y sector.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="how-it-works" id="como-funciona">
-        <div class="container">
-            <h2 class="section-title">Cómo funciona</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Análisis inicial</h3>
-                    <p>Identificamos oportunidades de automatización en tu negocio</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Propuesta personalizada</h3>
-                    <p>Diseñamos una solución adaptada a tus necesidades</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Implementación</h3>
-                    <p>Desarrollamos e integramos las automatizaciones</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Soporte continuo</h3>
-                    <p>Te acompañamos en la optimización y mejora constante</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Contact -->
     <section class="contact" id="contacto">
         <div class="container">
-            <h2 class="section-title">Contacta con nosotros</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 style="margin-bottom: 1.5rem;">Información de contacto</h3>
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <strong>Marc - Director Comercial</strong><br>
-                            <a href="mailto:marc@automizeai.es">marc@automizeai.es</a>
+            <div class="contact__content">
+                <div class="contact__info">
+                    <h2>¿Listo para Automatizar?</h2>
+                    <p class="contact__subtitle">Contacta con nuestros especialistas para una evaluación gratuita de tus procesos empresariales y descubre el potencial de automatización en tu empresa.</p>
+                    
+                    <div class="contact__methods">
+                        <div class="contact-method">
+                            <div class="contact-method__icon">📧</div>
+                            <div class="contact-method__info">
+                                <h3 class="contact-method__title">Marc - Director Comercial</h3>
+                                <a href="mailto:marc@automizeai.es" class="contact-method__link">marc@automizeai.es</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-method__icon">📧</div>
+                            <div class="contact-method__info">
+                                <h3 class="contact-method__title">Alik Karapetyan - CEO</h3>
+                                <a href="mailto:alik@automizeai.es" class="contact-method__link">alik@automizeai.es</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">👔</span>
-                        <div>
-                            <strong>Alik Karapetyan - CEO</strong><br>
-                            <a href="mailto:alik@automizeai.es">alik@automizeai.es</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">💬</span>
-                        <div>
-                            <strong>WhatsApp</strong><br>
-                            <a href="https://wa.me/34601003732">+34 601 003 732</a>
-                        </div>
-                    </div>
+                    
+                    <a href="https://wa.me/34601003732?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20automatización" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="whatsapp-btn">
+                        💬 WhatsApp (+34 601 003 732)
+                    </a>
                 </div>
-                <form>
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="text" placeholder="Empresa">
-                    <textarea placeholder="¿Qué proceso te gustaría automatizar?"></textarea>
-                    <button type="submit" class="btn-primary">Enviar mensaje</button>
+                
+                <form class="contact__form" id="contactForm">
+                    <div class="form__group">
+                        <label for="name" class="form__label">Nombre Completo *</label>
+                        <input type="text" id="name" name="name" class="form__input" required placeholder="Tu nombre completo">
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="email" class="form__label">Email Empresarial *</label>
+                        <input type="email" id="email" name="email" class="form__input" required placeholder="tu@empresa.com">
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="company" class="form__label">Empresa *</label>
+                        <input type="text" id="company" name="company" class="form__input" required placeholder="Nombre de tu empresa">
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="phone" class="form__label">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" class="form__input" placeholder="+34 600 000 000">
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="message" class="form__label">Describe tus procesos a automatizar *</label>
+                        <textarea id="message" name="message" class="form__textarea" required placeholder="Cuéntanos qué tareas repetitivas tiene tu empresa..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary" style="width: 100%;">
+                        Solicitar Evaluación Gratuita
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <!-- ✅ CAMBIO 1: Logo en footer también con AI en color -->
-                    <div class="footer-logo">Automize<span class="ai-accent">AI</span></div>
-                    <p style="color: var(--text-secondary);">Automatización inteligente para empresas modernas</p>
+            <div class="footer__content">
+                <div class="footer__section">
+                    <!-- CAMBIO APLICADO: Logo también en footer con AI en color -->
+                    <div class="footer__logo">
+                        <div class="logo__icon">AI</div>
+                        <div class="logo__text">Automize<span class="ai-accent">AI</span></div>
+                    </div>
+                    <p>Especialistas en automatización inteligente de procesos empresariales. Transformamos tu empresa hacia la eficiencia digital.</p>
                 </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Servicios</h4>
-                    <ul>
-                        <li><a href="#servicios">Automatización de procesos</a></li>
-                        <li><a href="#servicios">Integraciones</a></li>
-                        <li><a href="#servicios">Consultoría</a></li>
-                    </ul>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Servicios</h3>
+                    <a href="#servicios" class="footer__link">Automatización RPA</a>
+                    <a href="#servicios" class="footer__link">Integración de Sistemas</a>
+                    <a href="#servicios" class="footer__link">Reportes Automáticos</a>
+                    <a href="#servicios" class="footer__link">Workflows Personalizados</a>
                 </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Empresa</h4>
-                    <ul>
-                        <li><a href="#como-funciona">Cómo funciona</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Contacto</h3>
+                    <a href="mailto:marc@automizeai.es" class="footer__link">📧 marc@automizeai.es</a>
+                    <a href="mailto:alik@automizeai.es" class="footer__link">📧 alik@automizeai.es</a>
+                    <a href="https://wa.me/34601003732" class="footer__link">💬 WhatsApp: +34 601 003 732</a>
+                    <div class="footer__link">🌐 AutomizeAI.es</div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AutomizeAI. Todos los derechos reservados.</p>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2025 AutomizeAI.es - Todos los derechos reservados | Automatización Inteligente de Procesos Empresariales</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle?.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking links
+        navMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Form handling
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu interés! Te contactaremos pronto.');
+            this.reset();
         });
     </script>
 </body>
