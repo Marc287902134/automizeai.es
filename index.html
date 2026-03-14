@@ -57,9 +57,27 @@ border-bottom: 1px solid var(--border);
 transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: var(--shadow-sm); }
-.nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 9px; letter-spacing: -0.01em; }
-/* === CAMBIO: AI en azul clarito (#5ab4f0) === */
-.nav-logo .logo-ai { color: var(--accent-light); }
+.nav-logo { 
+  font-family: 'Syne', sans-serif; 
+  font-weight: 700; 
+  font-size: 1.25rem; 
+  color: var(--black); 
+  text-decoration: none; 
+  display: flex; 
+  align-items: center; 
+  gap: 9px; 
+  letter-spacing: -0.01em; 
+  white-space: nowrap;
+}
+/* === CAMBIO: AI en azul clarito PERO todo junto === */
+.nav-logo .logo-ai { 
+  color: var(--accent-light); 
+  display: inline;
+  margin-left: 0;
+}
+.nav-logo svg {
+  flex-shrink: 0;
+}
 .nav-logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2.5s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
@@ -425,7 +443,7 @@ automize<span class="logo-ai">AI</span>
 <a href="#precios">Presupuesto</a>
 <a href="#equipo">Equipo</a>
 <a href="#faq">FAQ</a>
-<a href="#contacto" class="nav-cta">Llamada gratis →</a>
+<a href="https://calendly.com/marc-automizeai/30min" class="nav-cta">Llamada gratis →</a>
 </div>
 <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
 <span></span><span></span><span></span>
@@ -437,7 +455,7 @@ automize<span class="logo-ai">AI</span>
 <a href="#precios" onclick="toggleMenu()">Presupuesto</a>
 <a href="#equipo" onclick="toggleMenu()">Equipo</a>
 <a href="#faq" onclick="toggleMenu()">FAQ</a>
-<a href="#contacto" onclick="toggleMenu()" style="color:#00b880;font-weight:600">Llamada gratis →</a>
+<a href="https://calendly.com/marc-automizeai/30min" onclick="toggleMenu()" style="color:#00b880;font-weight:600">Llamada gratis →</a>
 </div>
 <!-- HERO -->
 <section id="hero">
@@ -456,7 +474,7 @@ a la semana con IA
 Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 semanas. Sin código. Sin complicaciones. Con resultados medibles desde el día 1.
 </p>
 <div class="hero-ctas fade-up fade-up-d2">
-<a href="#contacto" class="btn-accent">Agenda llamada gratuita <span class="arrow-icon">→</span></a>
+<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent">Agenda llamada gratuita <span class="arrow-icon">→</span></a>
 <a href="#resultados" class="btn-secondary">Ver casos de éxito</a>
 </div>
 <div class="hero-trust fade-up fade-up-d3">
@@ -537,7 +555,7 @@ Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 seman
 </div>
 <div class="lead-form">
 <input type="email" class="lead-input" placeholder="tu@email.com">
-<a href="#contacto" class="btn-accent" style="padding:13px 24px; font-size:0.9rem; color:#fff;">Descargar gratis →</a>
+<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent" style="padding:13px 24px; font-size:0.9rem; color:#fff;">Descargar gratis →</a>
 </div>
 </div>
 </div>
@@ -735,7 +753,7 @@ Automatizamos el 80% de las tareas repetitivas de tu empresa en menos de 3 seman
 </div>
 </div>
 <div style="text-align:center; margin-top:40px;">
-<a href="#contacto" class="btn-accent">Solicitar presupuesto gratuito <span class="arrow-icon">→</span></a>
+<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent">Solicitar presupuesto gratuito <span class="arrow-icon">→</span></a>
 <p style="margin-top:16px; font-size:0.85rem; color:var(--text-light);">Respuesta garantizada en menos de 24 horas laborables</p>
 </div>
 </div>
@@ -862,7 +880,7 @@ Ver perfil
 <div class="cta-feature"><span class="cta-feature-dot"></span> Respuesta en menos de 24h</div>
 </div>
 <div class="cta-buttons fade-up fade-up-d3">
-<a href="tel:+34900000000" class="btn-accent" style="background:var(--accent);color:#fff;">
+<a href="https://calendly.com/marc-automizeai/30min" class="btn-accent" style="background:var(--accent);color:#fff;">
 📅 Reservar llamada gratuita <span class="arrow-icon">→</span>
 </a>
 <a href="mailto:automizeai@automizeai.es" class="btn-secondary btn-ghost">
