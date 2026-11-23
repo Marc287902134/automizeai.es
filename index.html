@@ -3,117 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutomizeAI — Automatización de procesos con IA para PYMEs en España</title>
-  <meta name="description" content="Para gerentes de empresas de 10 a 100 empleados con CRM/ERP. Recupera más de 15 horas semanales automatizando el trasvase manual de pedidos, facturas y datos en menos de 3 semanas.">
+  <title>AutomizeAI — Automatización de Operaciones con IA para Empresas (10–100 empleados)</title>
+  <meta name="description" content="Eliminamos el trasvase manual de pedidos, albaranes y facturas entre tu ERP, CRM y correo en menos de 3 semanas. Proyectos desde 1.500 €.">
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://tailwindcss.com"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FAFAFA; color: #111111; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F8F9FA;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
     details > summary { list-style: none; }
     details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body class="selection:bg-neutral-900 selection:text-white">
-  <header class="border-b border-neutral-200 bg-white">
-    <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-tight text-neutral-900">automize<span class="font-normal text-neutral-500">AI</span></a>
-      <button onclick="openModal()" class="text-sm font-semibold text-neutral-900 hover:underline underline-offset-4 cursor-pointer">Agendar diagnóstico (15 min) →</button>
+<body class="selection:bg-slate-900 selection:text-white">
+
+  <!-- BARRA SUPERIOR MÍNIMA (SIN FUGAS DE TRÁFICO) -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-xl font-extrabold tracking-tight text-slate-950">automize<span class="text-blue-600">AI</span></span>
+        <span class="hidden sm:inline-block text-xs font-medium text-slate-500 border-l border-slate-300 pl-3">Operaciones & Automatización B2B</span>
+      </div>
+      <button type="button" onclick="openBookingModal()" class="bg-slate-950 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-md transition shadow-sm cursor-pointer">
+        Agendar diagnóstico (15 min) →
+      </button>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 py-14 sm:py-20 space-y-20">
-    <section class="space-y-6">
-      <p class="inline-block text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-600 bg-neutral-200/70 px-3 py-1 rounded">Para gerentes de empresas de 10 a 100 empleados con CRM/ERP en España</p>
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-950 leading-[1.12]">Recupera más de 15 horas semanales automatizando el trasvase manual de pedidos, facturas y datos entre tus sistemas.</h1>
-      <p class="text-lg sm:text-xl text-neutral-700 leading-relaxed">Conectamos tu ERP, CRM, facturación y correo en menos de 3 semanas. Sin cambiar tus programas actuales, sin conocimientos técnicos y con retorno de inversión medible desde el primer mes.</p>
-      <div class="pt-2 space-y-3">
-        <button onclick="openModal()" class="w-full sm:w-auto bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-md transition cursor-pointer">Agendar llamada de diagnóstico gratuita (15 min) →</button>
-        <p class="text-xs sm:text-sm text-neutral-500">Hablamos directo con gerentes o responsables con capacidad de decisión. Sin compromiso.</p>
-      </div>
-    </section>
+  <main class="max-w-4xl mx-auto px-6 py-12 sm:py-20 space-y-24">
 
-    <hr class="border-neutral-200">
-
-    <section class="space-y-6">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">Si tienes 3 o más personas pasando datos a mano entre programas, estás quemando margen cada día</h2>
-      <ul class="space-y-4 text-base sm:text-lg text-neutral-800">
-        <li class="flex items-start gap-3"><span class="font-bold text-red-600 mt-0.5">✕</span><span><strong>Horas tiradas a la basura:</strong> Tu equipo pierde 3–4 horas diarias picando pedidos, albaranes, facturas y reportes.</span></li>
-        <li class="flex items-start gap-3"><span class="font-bold text-red-600 mt-0.5">✕</span><span><strong>Errores humanos caros:</strong> Un dato mal copiado genera reclamaciones, roturas de stock y sobrecostes.</span></li>
-        <li class="flex items-start gap-3"><span class="font-bold text-red-600 mt-0.5">✕</span><span><strong>Cuellos de botella:</strong> Si la persona clave se ausenta, la operativa se detiene.</span></li>
-        <li class="flex items-start gap-3"><span class="font-bold text-red-600 mt-0.5">✕</span><span><strong>Decidir a ciegas:</strong> Ausencia de visibilidad en tiempo real de métricas y cobros.</span></li>
-      </ul>
-    </section>
-
-    <hr class="border-neutral-200">
-
+    <!-- 1. HERO: FILTRO INMEDIATO + PROPUESTA DE VALOR -->
     <section class="space-y-8">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">¿Es esto para tu empresa?</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white border border-neutral-300 p-6 rounded-md space-y-4">
-          <h3 class="text-lg font-bold text-neutral-950 border-b border-neutral-200 pb-3">✓ SÍ podemos ayudarte si...</h3>
-          <ul class="space-y-3 text-sm sm:text-base text-neutral-800">
-            <li>• Tienes de <strong>10 a 100 empleados</strong>.</li>
-            <li>• Utilizas CRM o ERP (Holded, Sage, SAP, Odoo, HubSpot, A3).</li>
-            <li>• Tienes 3+ personas en tareas repetitivas.</li>
-            <li>• Eres gerente o decisor.</li>
-          </ul>
+      <div class="inline-flex items-center gap-2 bg-slate-900 text-white text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-md">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Para gerentes de empresas de 10 a 100 empleados con ERP o CRM</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-[1.1]">
+        Recupera más de 15 horas semanales automatizando el trasvase manual de pedidos, albaranes y facturas.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl">
+        Conectamos tu software actual (Holded, Sage, SAP, Odoo, HubSpot, Excel y correo) para que los datos fluyan solos en <strong class="text-slate-900 font-semibold">menos de 3 semanas</strong>. Sin cambiar de programas, sin desarrollos eternos y con retorno medible desde el primer mes.
+      </p>
+
+      <!-- CTA PRINCIPAL + MICRO-GARANTÍAS -->
+      <div class="pt-2 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <button type="button" onclick="openBookingModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-base sm:text-lg px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer text-center">
+            Agendar llamada de diagnóstico gratuita (15 min) →
+          </button>
         </div>
-        <div class="bg-neutral-100 border border-neutral-200 p-6 rounded-md space-y-4">
-          <h3 class="text-lg font-bold text-neutral-700 border-b border-neutral-200 pb-3">✕ NO somos para ti si...</h3>
-          <ul class="space-y-3 text-sm sm:text-base text-neutral-600">
-            <li>• Eres autónomo o micro-negocio.</li>
-            <li>• Buscas soluciones por debajo de 1.500 €.</li>
-            <li>• No usas software de gestión.</li>
-          </ul>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-500 font-medium">
+          <span>✓ Solo para gerentes o decisores</span>
+          <span>✓ Sin compromiso ni permanencia</span>
+          <span>✓ Calculamos tu ROI exacto en la llamada</span>
         </div>
       </div>
+
+      <!-- BARRA DE MÉTRICAS REALES -->
+      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200">
+        <div>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-950">+15 h/sem</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Ahorro operativo medio por empresa</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-950">&lt; 3 sem.</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Tiempo de puesta en producción</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-950">+40</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Empresas automatizadas en España</p>
+        </div>
+      </div>
     </section>
 
-    <hr class="border-neutral-200">
+    <!-- 2. EL COSTE OCULTO DE NO AUTOMATIZAR -->
+    <section class="bg-white border border-slate-200 rounded-xl p-8 sm:p-10 shadow-sm space-y-6">
+      <div class="space-y-2">
+        <p class="text-xs font-bold uppercase tracking-wider text-blue-600">El problema operativo</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-950">
+          Si tienes 3 o más personas pasando datos a mano entre sistemas, estás perdiendo miles de euros cada trimestre
+        </h2>
+      </div>
 
+      <p class="text-base text-slate-600 leading-relaxed">
+        No necesitas contratar más personal administrativo para absorber el crecimiento. El problema es que tu equipo está haciendo de puente humano entre programas que deberían hablarse solos:
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-5 pt-2">
+        <div class="p-4 rounded-lg bg-slate-50 border border-slate-200/80 space-y-1.5">
+          <p class="font-bold text-slate-900">1. Picado manual de pedidos y facturas</p>
+          <p class="text-sm text-slate-600">Horas diarias copiando datos de PDFs, correos o WhatsApp hacia tu ERP o programa de facturación.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-slate-50 border border-slate-200/80 space-y-1.5">
+          <p class="font-bold text-slate-900">2. Errores que cuestan dinero y clientes</p>
+          <p class="text-sm text-slate-600">Un código mal tecleado provoca envíos erróneos, abonos, reclamaciones y desabastecimientos.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-slate-50 border border-slate-200/80 space-y-1.5">
+          <p class="font-bold text-slate-900">3. Cuellos de botella por dependencia</p>
+          <p class="text-sm text-slate-600">Si la persona que controla las hojas de cálculo o los albaranes falta una semana, la operativa se frena.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-slate-50 border border-slate-200/80 space-y-1.5">
+          <p class="font-bold text-slate-900">4. Falta de control en tiempo real</p>
+          <p class="text-sm text-slate-600">Tardas días en saber el margen real, el estado de cobros o el stock actualizado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FILTRO DE CUALIFICACIÓN EXPLÍCITO -->
     <section class="space-y-8">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">Cómo trabajamos e inversión real</h2>
-      <div class="space-y-5 text-base sm:text-lg text-neutral-800">
-        <p><strong>1. Diagnóstico gratuito (15 min):</strong> Analizamos costes y calculamos ROI.</p>
-        <p><strong>2. Implementación (1-3 semanas):</strong> Conectamos tus herramientas sin interrumpir tu actividad.</p>
-        <p><strong>3. Panel en tiempo real:</strong> Control de ahorro mensual.</p>
+      <div class="space-y-2">
+        <p class="text-xs font-bold uppercase tracking-wider text-blue-600">Filtro de encaje</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-950">
+          ¿Es AutomizeAI adecuada para tu empresa?
+        </h2>
+        <p class="text-base text-slate-600">Preferimos ser transparentes antes de que reserves 15 minutos en nuestra agenda.</p>
       </div>
-      <div class="bg-neutral-900 text-white p-6 sm:p-8 rounded-md space-y-4">
-        <h3 class="text-xl sm:text-2xl font-bold">Proyectos a medida desde 1.500 €</h3>
-        <p class="text-neutral-300">Inversión habitual entre <strong>1.800 € y 2.500 €</strong> con recuperación en 2-3 meses.</p>
-      </div>
-    </section>
 
-    <section class="bg-white border-2 border-neutral-950 p-8 sm:p-10 rounded-md space-y-6 text-center">
-      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950">Hablemos 15 minutos y calcula tu ahorro trimestral.</h2>
-      <button onclick="openModal()" class="w-full sm:w-auto bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-md transition cursor-pointer">Agendar llamada de diagnóstico gratuita (15 min) →</button>
-    </section>
-  </main>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- SÍ ENCAJAS -->
+        <div class="bg-white border-2 border-slate-900 rounded-xl p-7 space-y-5 shadow-sm">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <h3 class="text-lg font-bold text-slate-950">SÍ podemos ayudarte si...</h3>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded">Buen encaje</span>
+          </div>
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-700">
+            <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span>Tienes entre <strong>10 y 100 empleados</strong> (distribuidoras, comercios mayoristas, empresas de servicios o industria).</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span>Ya trabajas con un <strong>ERP o CRM</strong> (Holded, Sage, SAP, A3, Odoo, HubSpot, Salesforce, etc.).</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span>Tienes <strong>3 o más personas</strong> haciendo trabajo administrativo repetitivo cada día.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span>Eres el <strong>gerente o responsable con capacidad de decisión</strong> y buscas delegar la ejecución técnica llave en mano.</span></li>
+          </ul>
+        </div>
 
-  <footer class="border-t border-neutral-200 bg-white mt-12">
-    <div class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-      <p>© 2026 AutomizeAI · España</p>
-      <a href="mailto:automizeai@automizeai.es" class="hover:text-neutral-900 underline">automizeai@automizeai.es</a>
-    </div>
-  </footer>
-
-  <div id="bookingModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
-    <div class="bg-white max-w-md w-full rounded-md p-6 sm:p-8 shadow-xl space-y-5 relative">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-900 text-xl font-bold cursor-pointer">✕</button>
-      <h3 class="text-xl font-bold text-neutral-950">Reservar diagnóstico (15 min)</h3>
-      <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-        <input type="text" required placeholder="Tu nombre y cargo" class="w-full border border-neutral-300 rounded px-3 py-2.5 text-sm">
-        <input type="email" required placeholder="Email corporativo" class="w-full border border-neutral-300 rounded px-3 py-2.5 text-sm">
-        <button type="submit" class="w-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold py-3 rounded text-sm transition cursor-pointer">Continuar →</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('bookingModal');
-    function openModal() { modal.classList.remove('hidden'); modal.classList.add('flex'); }
-    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); }
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    function handleFormSubmit(e) { e.preventDefault(); /* Configura aquí tu enlace de Calendly o Cal.com */ }
-  </script>
-</body>
-</html>
+        <!-- NO ENCAJAS -->
+        <div class="bg-slate-100 border border-slate-200 rounded-xl p-7 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <h3 class="text-lg font-bold text-slate-700">NO somos para ti si...</h3>
+            <span class="bg-slate-200 text-slate-600 text-xs font-bold px-2.5 py-1 rounded">No agendar</span>
+          </div>
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-600">
+            <li class="flex items-start gap-2.5"><span class="text-red-500 font-bold">✕</span><span>Eres autónomo o un negocio sin equipo administrativo.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-red-500 font-bold">✕</span><span>Buscas un "bot" genérico o una solución por debajo de <strong>1.500 €</strong>.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-red-500 font-bold">✕</span><span>Aún no tienes procesos definidos ni ningún software de gestión en marcha.</span></li>
