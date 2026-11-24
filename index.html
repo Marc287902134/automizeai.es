@@ -3,25 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutomizeAI | Recupera 15h semanales automatizando tus procesos</title>
-    <meta name="description" content="Conectamos tu ERP, CRM, facturación y correo en menos de 3 semanas. Recupera más de 15 horas semanales de tu equipo. Diagnóstico gratuito de 15 min.">
+    <title>Automatización de procesos con ERP/CRM | AutomizeAI</title>
+    <meta name="description" content="Conectamos tu ERP, CRM, facturación y correo en 1-3 semanas, sin cambiar tus programas. Para pymes de 10 a 100 empleados. Diagnóstico gratuito de 15 min.">
+    <link rel="canonical" href="https://automizeai.es">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Redes Sociales y WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="AutomizeAI">
+    <meta property="og:url" content="https://automizeai.es">
+    <meta property="og:title" content="Automatización de procesos con ERP/CRM | AutomizeAI">
+    <meta property="og:description" content="Conectamos tu ERP, CRM, facturación y correo en 1-3 semanas. Diagnóstico gratuito de 15 min.">
+    <meta property="og:image" content="https://automizeai.esog-1200x630.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Datos Estructurados Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://automizeai.es#organization",
+          "name": "AutomizeAI",
+          "url": "https://automizeai.es",
+          "logo": "https://automizeai.eslogo.png",
+          "description": "Consultora de automatización de procesos B2B para empresas de 10 a 100 empleados que usan ERP y CRM en España.",
+          "email": "administracion@automizeai.es",
+          "areaServed": { "@type": "Country", "name": "España" },
+          "founder": [
+            { "@type": "Person", "name": "Marc Pérez" },
+            { "@type": "Person", "name": "Alik Karapetyan" },
+            { "@type": "Person", "name": "Mario Casas" }
+          ],
+          "knowsAbout": ["Automatización de procesos", "Integración de ERP y CRM", "Holded", "Sage", "SAP", "Odoo", "HubSpot", "Salesforce"],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "administracion@automizeai.es",
+            "availableLanguage": "es",
+            "areaServed": "ES"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://automizeai.es#website",
+          "url": "https://automizeai.es",
+          "name": "AutomizeAI",
+          "inLanguage": "es-ES",
+          "publisher": { "@id": "https://automizeai.es#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://automizeai.es#webpage",
+          "url": "https://automizeai.es",
+          "name": "Automatización de procesos con ERP/CRM | AutomizeAI",
+          "description": "Conectamos tu ERP, CRM, facturación y correo en 1-3 semanas, sin cambiar tus programas.",
+          "inLanguage": "es-ES",
+          "isPartOf": { "@id": "https://automizeai.es#website" },
+          "about": { "@id": "https://automizeai.es#service" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://automizeai.es#service",
+          "name": "Automatización de procesos con integración ERP y CRM",
+          "serviceType": "Automatización de procesos empresariales",
+          "provider": { "@id": "https://automizeai.es#organization" },
+          "areaServed": { "@type": "Country", "name": "España" },
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "Empresas de 10 a 100 empleados",
+            "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10, "maxValue": 100 }
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1500, "priceCurrency": "EUR" }
+          }
+        }
+      ]
+    }
+    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configuración de Tailwind para tipografía y colores exactos -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
                     },
                     colors: {
                         brand: {
                             dark: '#111111',
                             light: '#FAFAFA',
-                            cta: '#0052FF', // Azul de alto contraste para el CTA
+                            cta: '#0052FF',
                             ctaHover: '#0040CC',
                         }
                     }
@@ -30,7 +112,6 @@
         }
     </script>
     
-    <!-- Estilos adicionales para suavizar el scroll y detalles finos -->
     <style>
         html { scroll-behavior: smooth; }
         body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -48,50 +129,43 @@
     <!-- 1. CABECERA MÍNIMA -->
     <header class="w-full border-b border-gray-200 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Logo de texto -->
-            <div class="text-xl font-bold tracking-tight text-brand-dark">
+            <a href="/" class="text-xl font-bold tracking-tight text-brand-dark">
                 automize<span class="text-brand-cta">AI</span>
-            </div>
-            <!-- Único enlace discreto a la derecha -->
+            </a>
             <a href="https://calendly.com/marc-automizeai/30min" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-600 hover:text-brand-dark transition-colors">
                 Agendar diagnóstico (15 min) &rarr;
             </a>
         </div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL CON ANCHO DE LECTURA CÓMODO -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <main class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-20 sm:space-y-28">
 
-        <!-- 2. BLOQUE HERO (FILTRO Y PROMESA DIRECTA) -->
+        <!-- 2. BLOQUE HERO -->
         <section class="text-center sm:text-left">
-            <!-- Pre-titular (Filtro) -->
             <p class="text-sm font-semibold tracking-wide text-gray-500 uppercase mb-4">
                 Para gerentes de empresas de 10 a 100 empleados con CRM/ERP en España.
             </p>
             
-            <!-- Titular H1 -->
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
-                Recupera más de 15 horas semanales de tu equipo automatizando el trasvase manual de pedidos, facturas y datos entre tus sistemas.
+                Automatización de procesos entre tu ERP, CRM y facturación: recupera 15 h semanales
             </h1>
             
-            <!-- Subtitular -->
             <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-8">
-                Conectamos tu ERP, CRM, facturación y correo en menos de 3 semanas. Sin cambiar tus programas actuales, sin conocimientos técnicos y con retorno de inversión medible desde el primer mes.
+                Eliminamos el trasvase manual de pedidos, facturas y datos entre tus sistemas en menos de 3 semanas. Sin cambiar tus programas actuales, sin conocimientos técnicos y con retorno de inversión medible desde el primer mes.
             </p>
             
-            <!-- CTA Principal -->
             <div class="flex flex-col items-center sm:items-start">
                 <a href="https://calendly.com/marc-automizeai/30min" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto text-center bg-brand-cta hover:bg-brand-ctaHover text-white font-bold text-lg px-8 py-4 rounded-md transition-colors shadow-sm">
                     Agendar llamada de diagnóstico gratuita (15 min)
                 </a>
-                <!-- Micro-texto debajo -->
                 <p class="mt-3 text-sm text-gray-500">
                     Hablamos directo con gerentes o responsables con capacidad de decisión.
                 </p>
             </div>
         </section>
 
-        <!-- 3. EL PROBLEMA REAL (SIN RODEOS) -->
+        <!-- 3. EL PROBLEMA REAL -->
         <section>
             <h2 class="text-2xl sm:text-3xl font-bold mb-6">El problema real de tu empresa hoy</h2>
             <div class="prose-custom text-gray-700 text-lg">
@@ -106,182 +180,13 @@
             </div>
         </section>
 
-        <!-- 4. ¿ES ESTO PARA TU EMPRESA? (AUTO-DESCARTE) -->
+        <!-- 4. ¿ES ESTO PARA TU EMPRESA? -->
         <section>
             <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center">¿Es esto para tu empresa?</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Columna SÍ -->
                 <div class="bg-white p-6 sm:p-8 rounded-lg border border-gray-200 shadow-sm">
                     <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center">
                         <span class="mr-2">✓</span> SÍ podemos ayudarte si...
                     </h3>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start"><span class="text-green-600 mr-2 mt-1">•</span> Tienes entre 10 y 100 empleados.</li>
-                        <li class="flex items-start"><span class="text-green-600 mr-2 mt-1">•</span> Ya usas un software de gestión (ERP, CRM, Holded, Sage, SAP, etc.).</li>
-                        <li class="flex items-start"><span class="text-green-600 mr-2 mt-1">•</span> Tienes procesos repetitivos diarios que consumen horas.</li>
-                        <li class="flex items-start"><span class="text-green-600 mr-2 mt-1">•</span> Buscas rentabilidad y delegar la ejecución técnica.</li>
-                    </ul>
-                </div>
-                <!-- Columna NO -->
-                <div class="bg-white p-6 sm:p-8 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center">
-                        <span class="mr-2">✗</span> NO somos para ti si...
-                    </h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">•</span> Eres autónomo o no tienes procesos definidos.</li>
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">•</span> Buscas un "chatbot" genérico barato de menos de 1.500 €.</li>
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">•</span> No tienes software de gestión implantado.</li>
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">•</span> Buscas cursos o tutoriales para hacerlo tú mismo.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. PRUEBA REAL (CASOS DE ÉXITO INTEGRADOS) -->
-        <section>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-8">Resultados reales de empresas como la tuya</h2>
-            <div class="space-y-8">
-                <!-- Caso 1 -->
-                <div class="bg-white p-6 sm:p-8 rounded-lg border-l-4 border-brand-cta shadow-sm">
-                    <p class="text-lg text-gray-800 italic mb-4">"Recuperamos 14 horas a la semana automatizando la facturación y el onboarding de clientes. El impacto en el equipo fue inmediato."</p>
-                    <div class="text-sm font-semibold text-brand-dark">Carlos Martínez <span class="font-normal text-gray-500">— CEO, Distribuciones Martínez S.L.</span></div>
-                </div>
-                <!-- Caso 2 -->
-                <div class="bg-white p-6 sm:p-8 rounded-lg border-l-4 border-brand-cta shadow-sm">
-                    <p class="text-lg text-gray-800 italic mb-4">"Redujimos un 90% los desabastecimientos. La gestión de stock pasó de 3 horas diarias a solo 15 minutos. Ahora tenemos datos fiables en tiempo real."</p>
-                    <div class="text-sm font-semibold text-brand-dark">Sara García <span class="font-normal text-gray-500">— Directora de Operaciones, Comercial Levante S.A.</span></div>
-                </div>
-                <!-- Caso 3 -->
-                <div class="bg-white p-6 sm:p-8 rounded-lg border-l-4 border-brand-cta shadow-sm">
-                    <p class="text-lg text-gray-800 italic mb-4">"Automatizar la introducción manual de pedidos nos ahorra 2.400 € al mes en costes operativos. Se pagó solo en el primer mes."</p>
-                    <div class="text-sm font-semibold text-brand-dark">Miguel Rodríguez <span class="font-normal text-gray-500">— Gerente, Ferretería Industrial Norte</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. CÓMO TRABAJAMOS E INVERSIÓN (TRANSPARENCIA TOTAL) -->
-        <section>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-8">Cómo trabajamos (y cuánto cuesta)</h2>
-            
-            <!-- Proceso en 3 pasos -->
-            <div class="space-y-6 mb-12">
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mr-4 mt-1">1</div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Llamada de diagnóstico (15 min)</h3>
-                        <p class="text-gray-700">Analizamos tus procesos actuales y calculamos el ROI real que puedes obtener antes de empezar.</p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mr-4 mt-1">2</div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Implementación en 1 a 3 semanas</h3>
-                        <p class="text-gray-700">Trabajamos directamente sobre tus herramientas actuales. Sin cambiar tus programas, sin interrupciones.</p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-sm mr-4 mt-1">3</div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Entrega con dashboard de ahorro</h3>
-                        <p class="text-gray-700">Te entregamos el sistema funcionando y un panel donde ves el ahorro en euros y horas mes a mes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bloque de Inversión -->
-            <div class="bg-white p-6 sm:p-8 rounded-lg border border-gray-300 shadow-sm">
-                <h3 class="text-xl font-bold mb-4">Inversión transparente</h3>
-                <p class="text-lg text-gray-800 mb-2"><strong>Proyectos a medida desde 1.500 €</strong> (inversión habitual entre 1.800 € y 2.500 €).</p>
-                <p class="text-lg text-gray-800 mb-2"><strong>Mantenimiento y soporte opcional del 10 % mensual.</strong></p>
-                <p class="text-lg text-gray-800 font-semibold">Sin permanencia.</p>
-            </div>
-        </section>
-
-        <!-- 7. QUIÉN ESTÁ DETRÁS (CREDIBILIDAD HUMANA BREVE) -->
-        <section>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Quién está detrás de AutomizeAI</h2>
-            <div class="prose-custom text-gray-700 text-lg">
-                <p>Somos <strong>Marc Pérez, Alik Karapetyan y Mario Casas</strong>. Hemos automatizado más de 40 empresas en España y siempre calculamos el retorno de inversión antes de empezar. No vendemos humo: vendemos horas recuperadas y euros ahorrados.</p>
-                <p>Si decides agendar la llamada de 15 minutos, hablarás directamente con uno de nosotros, no con un comercial.</p>
-            </div>
-        </section>
-
-        <!-- 8. PREGUNTAS FRECUENTES (FAQ) -->
-        <section>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-8">Preguntas frecuentes</h2>
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <details class="group bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
-                    <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer">
-                        ¿Se integra con nuestro ERP/CRM actual?
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
-                    </summary>
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        Sí. Trabajamos con las principales herramientas del mercado (Holded, Sage, SAP, Odoo, Salesforce, HubSpot, etc.) y también con sistemas propios. No tienes que cambiar tus programas actuales.
-                    </div>
-                </details>
-                <!-- FAQ 2 -->
-                <details class="group bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
-                    <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer">
-                        ¿Cuánto tardáis?
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
-                    </summary>
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        Entre 1 y 3 semanas dependiendo de la complejidad de los procesos y del número de integraciones. En la llamada de diagnóstico te damos un plazo exacto.
-                    </div>
-                </details>
-                <!-- FAQ 3 -->
-                <details class="group bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
-                    <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer">
-                        ¿Cómo sé que recuperaré la inversión?
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
-                    </summary>
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        Antes de empezar calculamos el ROI en la llamada de diagnóstico. Si no vemos claro que vas a recuperar la inversión en menos de 3 meses, te lo decimos y no seguimos adelante.
-                    </div>
-                </details>
-                <!-- FAQ 4 -->
-                <details class="group bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
-                    <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer">
-                        ¿Qué pasa si algo falla?
-                        <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
-                    </summary>
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        Todos los proyectos incluyen un periodo de garantía y pruebas. Además, ofrecemos mantenimiento opcional del 10% mensual con soporte prioritario para que todo siga funcionando sin interrupciones.
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <!-- 9. CIERRE Y LLAMADA A LA ACCIÓN FINAL -->
-        <section class="text-center border-t border-gray-200 pt-16">
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-8">
-                Si tienes 3 o más personas haciendo tareas repetitivas entre sistemas, hablemos 15 minutos.
-            </h2>
-            <div class="flex flex-col items-center">
-                <a href="https://calendly.com/marc-automizeai/30min" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto text-center bg-brand-cta hover:bg-brand-ctaHover text-white font-bold text-lg px-8 py-4 rounded-md transition-colors shadow-sm">
-                    Agendar llamada de diagnóstico gratuita (15 min) &rarr;
-                </a>
-                <p class="mt-4 text-sm text-gray-500">
-                    Plazas limitadas. Hablamos directamente con responsables con capacidad de decisión.
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- PIE DE PÁGINA MÍNIMO -->
-    <footer class="bg-white border-t border-gray-200 mt-12">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500">
-            <div class="mb-4 sm:mb-0">
-                &copy; 2025 AutomizeAI. Todos los derechos reservados.
-            </div>
-            <div class="flex items-center space-x-6">
-                <a href="#" class="hover:text-brand-dark transition-colors">Política de privacidad</a>
-                <a href="mailto:administracion@automizeai.es" class="hover:text-brand-dark transition-colors">administracion@automizeai.es</a>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
